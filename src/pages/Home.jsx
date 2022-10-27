@@ -1,4 +1,9 @@
-import { StyledTitle, StyledSubTitle,StyledContainerCard, Avatar } from "../components/Styles";
+import { 
+    StyledTitle, 
+    StyledSubTitle,
+    StyledContainerCard, 
+    Avatar, 
+    StyledButton } from "../components/Styles";
 
 import AvatarImg from "../assets/frontend salvioton.jpg"
 const Home = () => {
@@ -14,6 +19,7 @@ const Home = () => {
                  <StyledSubTitle size={16}>
                     Faça login para continuar
                 </StyledSubTitle>
+                <StyledButton to="/login">Entrar</StyledButton>
             </StyledContainerCard>
         </div>
     )

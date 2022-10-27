@@ -1,25 +1,10 @@
 :root {
 
     --ff-primary: 'Inter', sans-serif;
-
-    --slate-900: #161619;
-    --slate-800: #1A1B21;
-    --slate-700: #23252C;
-    --slate-600: #505460;
-    --slate-200: #b9bcc6;
-    
-    --gray-300: #9CA3AF;
-    --blue-400: #5093e2;
-    --orange-200: #f3bf99;
-    --white: #FFFF;
-    
-
-
-
 }
 
 
-html,body {
+* {
     font-family: var(--ff-primary);
     padding: 0;
     margin: 0;

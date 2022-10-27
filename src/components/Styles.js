@@ -1,5 +1,8 @@
 import styled from "styled-components"
 
+//react router
+import {Link} from "react-router-dom"
+
 export const colors = {
     ffPrimary: "'Inter', sans-serif",
 
@@ -13,6 +16,7 @@ export const colors = {
     blue400: "#5093e2",
     orange200: "#f3bf99",
     white: "#FFFF",
+    red: "red"
 
 }
 //styled components
@@ -35,7 +39,7 @@ export const StyledTitle = styled.h2`
     color: ${(props) => props.color ? props.color : colors.white};
     padding: 5px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 `;
 
 export const StyledSubTitle = styled.p`
@@ -64,3 +68,80 @@ export const Avatar = styled.div`
     background-position: center;
     margin: auto;
 `;
+
+export const StyledButton = styled(Link)`
+    padding: 12px 16px;
+    width: 400px;
+    background-color: ${colors.blue400};
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    color: ${colors.white};
+    text-decoration: none;
+    text-align: center;
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+    
+`;
+//Input
+
+export const StyledTextInput = styled.input`
+    padding: 15px;
+    font-size: 17px;
+    letter-spacing: 1px;
+    outline: 0;
+    color: ${colors.gray300};
+    border: 0;
+    border-radius: 6px;
+    display: block;
+    margin: 0;
+    transition: ease-in-out 0.3s;
+
+    ${(props) => props.invalid && `background-color: ${colors.red}; color: ${colors.gray300};`}
+
+    &:focus {
+        background-color: ${colors.slate700};
+        color: ${colors.gray300}
+    }
+`;
+
+export const StyledLabel = styled.p`
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0.5rem 0;
+    color: ${colors.white}
+`; 
+
+export const StyledFormArea = styled.div`
+    background-color: ${colors.slate800};
+    text-align: center;
+    padding: 1px 15px;
+    border-radius: 12px;
+    width: 464px;
+    height: 458px;
+`;
+
+export const StyledFormButton = styled.button`
+    padding: 12px 16px;
+    width: 400px;
+    background-color: ${colors.blue400};
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    color: ${colors.white};
+    text-decoration: none;
+    text-align: center;
+    transition: ease-in-out 0.3s;
+
+    &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+    
+`;
+
