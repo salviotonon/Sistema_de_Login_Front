@@ -13,7 +13,7 @@ export default function Form() {
     return (
         <div className="container--form">
             <form onSubmit={handleSubmit(handleSignIn)}>
-                <label htmlFor="username">Login</label>
+                <label htmlFor="username">Login"""</label>
                 <input
                     {...register("username")}
                     type="text"
@@ -25,7 +25,7 @@ export default function Form() {
                     type="password"
                     name="password"
                     id="password" />
-                <button type="submit">submit</button>
+                <button type="submit">Enviar</button>
             </form>
         </div>
     )
