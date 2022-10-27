@@ -40,6 +40,7 @@ export const StyledTitle = styled.h2`
     padding: 5px;
     font-weight: 700;
     margin-bottom: 8px;
+    margin-top: 28px;
 `;
 
 export const StyledSubTitle = styled.p`
@@ -47,7 +48,6 @@ export const StyledSubTitle = styled.p`
     text-align: center;
     color: ${(props) => props.color ? props.color : colors.gray300};
     padding: 5px;
-    margin-bottom: 25px;
     font-weight: 400;
 `;
 
@@ -70,8 +70,10 @@ export const Avatar = styled.div`
 `;
 
 export const StyledButton = styled(Link)`
+    display: block;
+    align-self: center;
     padding: 12px 16px;
-    width: 400px;
+    width: 80%;
     background-color: ${colors.blue400};
     font-size: 14px;
     border: none;
@@ -90,7 +92,7 @@ export const StyledButton = styled(Link)`
 //Input
 
 export const StyledTextInput = styled.input`
-    padding: 15px;
+    padding: 10px;
     font-size: 17px;
     letter-spacing: 1px;
     outline: 0;
@@ -98,7 +100,8 @@ export const StyledTextInput = styled.input`
     border: 0;
     border-radius: 6px;
     display: block;
-    margin: 0;
+    width: 100%;
+    margin: auto auto auto 0;
     transition: ease-in-out 0.3s;
 
     ${(props) => props.invalid && `background-color: ${colors.red}; color: ${colors.gray300};`}
@@ -118,12 +121,15 @@ export const StyledLabel = styled.p`
 `; 
 
 export const StyledFormArea = styled.div`
+    display: flex;
+    flex-direction: column;
     background-color: ${colors.slate800};
     text-align: center;
-    padding: 1px 15px;
     border-radius: 12px;
+    max-width: 464px;
     width: 464px;
-    height: 458px;
+    height: 464px;
+    width: 100%;
 `;
 
 export const StyledFormButton = styled.button`
@@ -143,5 +149,9 @@ export const StyledFormButton = styled.button`
         cursor: pointer;
     }
     
+`;
+export const StyledSpanLink = styled.span`
+    color: ${colors.orange200};
+    font-size: ${(props) => props.size}px;
 `;
 
