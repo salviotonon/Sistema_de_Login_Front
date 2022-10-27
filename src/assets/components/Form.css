@@ -1,0 +1,32 @@
+.container--form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 350px;
+    background-color: #1A1B21;
+    margin: auto auto;
+    border-radius: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
+    
+}
+form input {
+    margin: 1rem auto;
+    padding: 0.3rem;
+    width: 80%;
+
+}
+form label {
+    color: white;
+}
+button {
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-radius: 8px;
+    width: 80%;
+
+}
