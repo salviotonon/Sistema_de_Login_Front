@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 //react router
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 export const colors = {
     ffPrimary: "'Inter', sans-serif",
@@ -16,7 +16,7 @@ export const colors = {
     blue400: "#5093e2",
     orange200: "#f3bf99",
     white: "#FFFF",
-    red: "red"
+    red: "#F23107",
 
 }
 //styled components
@@ -54,7 +54,6 @@ export const StyledSubTitle = styled.p`
 export const StyledContainerCard = styled.div`
     display: flex;
     width: 318px;
-    height: 657px;
     background-color: ${colors.slate700};
     flex-direction: column;
 `;
@@ -104,7 +103,8 @@ export const StyledTextInput = styled.input`
     margin: auto auto auto 0;
     transition: ease-in-out 0.3s;
 
-    ${(props) => props.invalid && `background-color: ${colors.red}; color: ${colors.gray300};`}
+    ${(props) => props.invalid && `border: 1px solid ${colors.red}; 
+    color: ${colors.gray300};`}
 
     &:focus {
         background-color: ${colors.slate700};
@@ -118,7 +118,7 @@ export const StyledLabel = styled.p`
     font-weight: 500;
     margin: 0.5rem 0;
     color: ${colors.white}
-`; 
+`;
 
 export const StyledFormArea = styled.div`
     display: flex;
@@ -129,7 +129,6 @@ export const StyledFormArea = styled.div`
     border-radius: 12px;
     max-width: 464px;
     width: 464px;
-    height: 464px;
     width: 100%;
 `;
 
@@ -167,12 +166,12 @@ export const ErrorMsg = styled.div`
     color: red;
     margin-bottom: 10px;
     margin-top: 8px;
-    text-align: center;
+    text-align: left;
 `;
 export const ExtraText = styled.p`
     font-size: ${(props) => props.size}px;
     text-align: center;
-    color: ${(props) => (props.color? props.color : color.gray300)};
+    color: ${(props) => (props.color ? props.color : colors.gray300)};
     padding: 2px;
     margin-top: 10px;
 `;
@@ -184,5 +183,19 @@ export const StyledIcon = styled.p`
     top: 35px;
     ${(props) => props.right && `right: 0; `}
     ${(props) => props.right && `left: 80%;`}
+`;
+
+export const TextLink = styled(Link)`
+    font-size: ${(props) => props.size}px;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: ${colors.orange200};
+
+    &:hover {
+        text-decoration: underline;
+        font-weight: 500;
+    }
 `;
 

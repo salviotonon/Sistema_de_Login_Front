@@ -8,8 +8,16 @@ import {
     StyledTextInput,
     StyledSpanLink,
     StyledContainerSpanLink,
-    
+    ExtraText,
+    TextLink,
+    colors
+
 } from "../components/Styles";
+
+//spinner
+import BeatLoader from "react-spinners/BeatLoader";
+
+
 
 import AvatarImg from "../assets/frontend salvioton.jpg"
 
@@ -19,12 +27,13 @@ import { TextInput } from "../components/FormLib";
 import * as Yup from "yup"
 
 //icons
-import {Eye, EyeSlash} from "phosphor-react"
+import { Eye, EyeSlash } from "phosphor-react"
 
-const Home = () => {
+const Login = () => {
     return (
         <div>
             <StyledFormArea>
+
                 <StyledTitle size={24}>
                     Login
                 </StyledTitle>
@@ -39,16 +48,16 @@ const Home = () => {
                     validationSchema={
                         Yup.object({
                             email: Yup.string().email("Email inválido")
-                            .required(""),
+                                .required(""),
                             password: Yup.string().min(4, "Senha é muito curta").required("")
                         })
                     }
-                    onSubmit={() =>{
+                    onSubmit={(values, { setSubmitting }) => {
                         console.log(values);
                     }}
                 >
-                    {() => (
-                        <form>
+                    {({isSubmitting}) => (
+                        <form onSubmit={isSubmitting.handleform}>
                             <TextInput
                                 name="email"
                                 type="text"
@@ -60,19 +69,29 @@ const Home = () => {
                                 type="password"
                                 label="Senha"
                                 placeholder="*********"
-                                icon={<Eye/>}
+                                icon={<Eye />}
                             />
+                            <StyledContainerSpanLink>
+                                <TextLink to="/Signup" size={13}>Não possui conta?</TextLink>
+                                <TextLink to="/Signup" size={13}>Esqueceu sua senha?</TextLink>
+                            </StyledContainerSpanLink>
+                            {!isSubmitting && <StyledButton type="submit">
+                            Entrar
+                            </StyledButton>}
+                            {isSubmitting && (
+                                <BeatLoader
+                                    color={colors.gray300}
+                                    size={20}
+                                    aria-label="Loading Spinner"
+                                    data-testid="loader"
+                                />
+                            )}
                         </form>
                     )}
                 </Formik>
-                <StyledContainerSpanLink>
-                    <StyledSpanLink size={13}>Não possui conta?</StyledSpanLink>
-                    <StyledSpanLink size={13}>Esqueceu sua senha?</StyledSpanLink>
-                </StyledContainerSpanLink>
-                <StyledButton type="submit">Entrar</StyledButton>
             </StyledFormArea>
         </div>
     )
 }
 
-export default Home;
+export default Login;
