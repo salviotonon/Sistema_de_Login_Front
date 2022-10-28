@@ -19,7 +19,7 @@ import BeatLoader from "react-spinners/BeatLoader";
 
 
 
-import AvatarImg from "../assets/frontend salvioton.jpg"
+import AvatarImg from "../assets/images/salvioton.jpg"
 
 //formik
 import { Formik, Form } from "formik";
@@ -29,7 +29,7 @@ import * as Yup from "yup"
 //icons
 import { Eye, EyeSlash } from "phosphor-react"
 
-const Login = () => {
+export const Login = () => {
     return (
         <div>
             <StyledFormArea>
@@ -93,5 +93,3 @@ const Login = () => {
         </div>
     )
 }
-
-export default Login;

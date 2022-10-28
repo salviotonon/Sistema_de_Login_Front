@@ -1,23 +1,17 @@
-import Home from "./pages/Home"
-import Login from "./pages/Login"
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-import './App.css'
-import { StyledContainer } from "./components/Styles"
+import theme from './assets/styles/theme';
+import { MainRoutes } from './Routes';
+import GlobalStyle from './assets/styles/global';
 
-
-//loader 
-
-import { BrowserRouter as Router,  Route } from "react-router-dom"
-
-
-function App() {
-    return (
-      <Router>
-        <StyledContainer>
-          <Login />
-        </StyledContainer>
-      </Router>
-    );
-  }
-
-export default App;
+export const App = () => {
+  return (
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MainRoutes />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
+}
