@@ -39,7 +39,6 @@ export const StyledTitle = styled.h2`
     color: ${(props) => props.color ? props.color : colors.white};
     padding: 5px;
     font-weight: 700;
-    margin-bottom: 8px;
     margin-top: 28px;
 `;
 
@@ -48,6 +47,7 @@ export const StyledSubTitle = styled.p`
     text-align: center;
     color: ${(props) => props.color ? props.color : colors.gray300};
     padding: 5px;
+    margin-bottom: 2rem;
     font-weight: 400;
 `;
 
@@ -122,6 +122,7 @@ export const StyledLabel = styled.p`
 
 export const StyledFormArea = styled.div`
     display: flex;
+    padding: 2rem;
     flex-direction: column;
     background-color: ${colors.slate800};
     text-align: center;
@@ -153,5 +154,35 @@ export const StyledFormButton = styled.button`
 export const StyledSpanLink = styled.span`
     color: ${colors.orange200};
     font-size: ${(props) => props.size}px;
+    margin-bottom: 2rem;
+    margin-right: 1rem;
+    cursor: pointer;
+`;
+export const StyledContainerSpanLink = styled.div`
+    padding: 1rem;
+    
+`;
+export const ErrorMsg = styled.div`
+    font-size: 13px;
+    color: red;
+    margin-bottom: 10px;
+    margin-top: 8px;
+    text-align: center;
+`;
+export const ExtraText = styled.p`
+    font-size: ${(props) => props.size}px;
+    text-align: center;
+    color: ${(props) => (props.color? props.color : color.gray300)};
+    padding: 2px;
+    margin-top: 10px;
+`;
+export const StyledIcon = styled.p`
+    color:${colors.slate600};
+    position: absolute;
+    cursor: pointer;
+    font-size: 21px;
+    top: 35px;
+    ${(props) => props.right && `right: 0; `}
+    ${(props) => props.right && `left: 80%;`}
 `;
 
