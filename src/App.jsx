@@ -1,15 +1,17 @@
-import './App.css'
-import Form from "./assets/components/Form"
+import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
-function App() {
+import theme from './assets/styles/theme';
+import { MainRoutes } from './Routes';
+import GlobalStyle from './assets/styles/global';
 
-
+export const App = () => {
   return (
-    <div className="App">
-      <Form />
-     
-    </div>
-  )
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
+        <MainRoutes />
+      </ThemeProvider>
+    </BrowserRouter>
+  );
 }
-
-export default App
