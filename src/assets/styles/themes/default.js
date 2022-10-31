@@ -39,6 +39,6 @@ export default {
     large: '1.8rem',
     medium: '1.6rem',
     small: '1.4rem',
-  }
+  },
 
 };

@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle, css } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -15,7 +15,7 @@ export default createGlobalStyle`
   body {
 
     ${({ theme }) => css`
-    
+
       font-family: ${theme.font};
       color: ${theme.colors.white};
       background-color: ${theme.colors.slate[700]};
@@ -23,7 +23,7 @@ export default createGlobalStyle`
       h1 {
         font-size: ${theme.size.h1};
       }
-      
+
       h2 {
         font-size: ${theme.size.h2};
       }
