@@ -14,7 +14,7 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
-    padding: 2.8rem 3.2rem;
+    padding: 2.8rem 3.0rem;
 
     .subtitle {
       margin-top: 0.8rem;
