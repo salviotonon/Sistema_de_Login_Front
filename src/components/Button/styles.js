@@ -48,6 +48,9 @@ export const ButtonContainer = styled.div`
   align-items: center;
 
   button, a {
+    display: flex;
+    justify-content: center;
+
     color: inherit;
     font-size: inherit;
     font-weight: inherit;

@@ -20,5 +20,9 @@ export const Container = styled.div`
     gap: 1.2rem;
 
     margin-top: 3.6rem;
+
+    #app-btn {
+      width: 40rem;
+    }
   }
 `;

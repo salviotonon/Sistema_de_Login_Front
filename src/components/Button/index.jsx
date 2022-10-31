@@ -18,6 +18,7 @@ export const Button = ({
   return (
     <S.ButtonContainer variant={variant}>
       <Component
+        id="app-btn"
         onClick={handleDisabledAnchor}
         disabled={disabled}
         {...props}
