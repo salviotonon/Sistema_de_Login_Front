@@ -25,6 +25,7 @@ export const HomeLogout = () => (
       <Button
         type="button"
         variant="secondary"
+        to="/signup"
       >
         Ainda não tenho cadastro
       </Button>

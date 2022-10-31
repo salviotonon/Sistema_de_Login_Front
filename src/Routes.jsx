@@ -61,7 +61,7 @@ export const MainRoutes = () => (
     />
 
     <Route
-      path="/singup"
+      path="/signup"
       element={(
         <CustomRoute>
           <Signup />
