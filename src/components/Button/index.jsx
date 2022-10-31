@@ -1,30 +1,42 @@
-import { Slot } from '@radix-ui/react-slot';
+import { useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
 export const Button = ({
-  variant, children, asChild, ...props
+  variant, children, isLink, disabled, ...props
 }) => {
-  const Component = asChild ? Slot : S.StyledButton;
+  const Component = isLink ? Link : 'button';
+
+  const handleDisabledAnchor = useCallback((event) => {
+    if (disabled) {
+      event.preventDefault();
+    }
+  }, [disabled]);
 
   return (
-    <Component
-      variant={variant}
-      {...props}
-    >
-      {children}
-    </Component>
+    <S.ButtonContainer variant={variant}>
+      <Component
+        onClick={handleDisabledAnchor}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </Component>
+    </S.ButtonContainer>
   );
 };
 
 Button.propTypes = {
   variant: PropTypes.oneOf(['main', 'secondary', 'danger']),
   children: PropTypes.node.isRequired,
-  asChild: PropTypes.bool,
+  isLink: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
   variant: 'main',
-  asChild: false,
+  isLink: false,
+  disabled: false,
 };

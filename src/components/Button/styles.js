@@ -42,25 +42,37 @@ const variants = {
   `,
 };
 
-export const StyledButton = styled.button`
-  border: none;
-  outline: 0;
-  padding: 1.2rem 1.6rem;
-  border-radius: 6px;
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  font-size: 1.4rem;
-  font-weight: 700;
+  button, a {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+
+    padding: 1.2rem 1.6rem;
+    border-radius: 6px;
+
+    font-size: 1.4rem;
+    font-weight: 700;
+
+    ${({ variant }) => variants[variant || 'main']};
+
+    &[disabled] {
+      color: ${({ theme }) => theme.colors.slate[600]};
+      background-color: ${({ theme }) => theme.colors.slate[800]};
+      cursor: default;
+    }
+  }
 
   a {
     text-decoration: none;
-    color: inherit;
   }
 
-  ${({ variant }) => variants[variant || 'main']};
-
-  &[disabled] {
-    color: ${({ theme }) => theme.colors.slate[600]};
-    background-color: ${({ theme }) => theme.colors.slate[800]};
-    cursor: default;
+  button {
+    border: none;
+    outline: 0;
   }
 `;

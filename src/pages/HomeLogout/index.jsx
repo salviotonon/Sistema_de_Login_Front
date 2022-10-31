@@ -19,20 +19,17 @@ export const HomeLogout = () => (
     <div className="buttons">
       <Button
         type="button"
+        to="/login"
+        isLink
       >
-        <Link to="/login">
-          Fazer login
-        </Link>
+        Fazer login
       </Button>
 
       <Button
         type="button"
-        variant="danger"
-        disabled
+        variant="secondary"
       >
-        <Link to="/signup">
-          Ainda não tenho cadastro
-        </Link>
+        Ainda não tenho cadastro
       </Button>
     </div>
   </S.Container>
