@@ -7,11 +7,11 @@ import * as S from './styles';
 export const HomeLogout = () => (
   <S.Container>
     <Heading heading="h1">
-      Login
+      Faça login para acessar nossa plataforma!
     </Heading>
 
     <Text setFontSize="large">
-      Faça login para continuar
+      Totalmente gratuíta e disponível para toda região.
     </Text>
 
     <Button
