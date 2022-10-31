@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import felipeAvatar from '../../assets/images/felipe-avatar.jpg';
 import { Logo } from '../../components/Logo';
@@ -7,19 +8,31 @@ import { NavBar } from '../NavBar';
 
 import * as S from './styles';
 
-export const Header = () => (
+export const Header = ({ isAuthenticated }) => (
   <S.Container>
     <div className="logo-and-nav">
       <Logo />
-      <NavBar />
+      {isAuthenticated && (
+        <NavBar />
+      )}
     </div>
 
-    <div className="profile-and-logout">
-      <Link to="/profile" id="btn-avatar">
-        <img src={felipeAvatar} alt="Avatar" id="avatar" />
-      </Link>
+    {isAuthenticated && (
+      <div className="profile-and-logout">
+        <Link to="/profile" id="btn-avatar">
+          <img src={felipeAvatar} alt="Avatar" id="avatar" />
+        </Link>
 
-      <LogoutButton />
-    </div>
+        <LogoutButton />
+      </div>
+    )}
   </S.Container>
 );
+
+Header.propTypes = {
+  isAuthenticated: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  isAuthenticated: false,
+};
