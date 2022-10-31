@@ -1,5 +1,6 @@
+import { Envelope, Lock, User } from 'phosphor-react';
 import { Heading } from '../../components/Heading';
-import { LabelButton } from '../../components/LabelButton';
+import { Input } from '../../components/Input';
 import { Text } from '../../components/Text';
 
 import * as S from './styles';
@@ -16,9 +17,33 @@ export const Signup = () => (
       </Text>
 
       <S.FormStyled>
-        <LabelButton to="/login">
-          Já possuí uma conta?
-        </LabelButton>
+        <Input
+          type="text"
+          placeholder="Digite seu nome de usuário"
+          labelName="Nome do usuário"
+          icon={User}
+        />
+
+        <Input
+          type="email"
+          placeholder="Digite seu e-mail"
+          labelName="E-mail"
+          icon={Envelope}
+        />
+
+        <Input
+          type="password"
+          placeholder="*********"
+          labelName="Senha"
+        />
+
+        <Input
+          type="password"
+          placeholder="*********"
+          labelName="Confirmar senha"
+          icon={Lock}
+        />
+
       </S.FormStyled>
     </div>
     <S.EmptyFooter />

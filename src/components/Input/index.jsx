@@ -10,22 +10,24 @@ export const Input = ({
   return (
     <S.InputGroup>
       {labelName && (
-        <S.InputLabel>
+        <S.InputLabel hasError={!!errorFeedback}>
           {labelName}
         </S.InputLabel>
       )}
 
-      <S.InputBoxContainer>
+      <S.InputBoxContainer hasError={!!errorFeedback}>
         {icon && (
-          <IconComponent />
+          <S.InputIcon>
+            <IconComponent />
+          </S.InputIcon>
         )}
         <S.InputStyled {...props} />
 
       </S.InputBoxContainer>
       {errorFeedback && (
-        <S.errorFeedback>
+        <S.InputErrorFeedback>
           {errorFeedback}
-        </S.errorFeedback>
+        </S.InputErrorFeedback>
       )}
     </S.InputGroup>
   );

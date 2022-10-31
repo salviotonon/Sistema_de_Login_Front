@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import * as InputStyles from '../../components/Input/styles';
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.slate[800]};
   border-radius: 12px;
@@ -24,6 +26,10 @@ export const Container = styled.div`
 export const FormStyled = styled.form`
   margin-top: 3.6rem;
   width: 100%;
+
+  ${InputStyles.InputGroup} + ${InputStyles.InputGroup} {
+    margin-top: 1.6rem;
+  }
 `;
 
 export const EmptyFooter = styled.footer`
