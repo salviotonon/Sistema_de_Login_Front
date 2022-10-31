@@ -6,8 +6,6 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  height: 100vh;
-
   img {
     width: 128px;
     height: 128px;
