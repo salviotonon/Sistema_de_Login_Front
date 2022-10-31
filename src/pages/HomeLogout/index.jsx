@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { Button } from '../../components/Button';
 import { Heading } from '../../components/Heading';
 import { Text } from '../../components/Text';
@@ -18,14 +20,19 @@ export const HomeLogout = () => (
       <Button
         type="button"
       >
-        Fazer login
+        <Link to="/login">
+          Fazer login
+        </Link>
       </Button>
 
       <Button
         type="button"
-        variant="secondary"
+        variant="danger"
+        disabled
       >
-        Ainda não tenho cadastro
+        <Link to="/signup">
+          Ainda não tenho cadastro
+        </Link>
       </Button>
     </div>
   </S.Container>
