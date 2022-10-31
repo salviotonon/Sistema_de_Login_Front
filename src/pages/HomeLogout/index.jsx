@@ -14,10 +14,19 @@ export const HomeLogout = () => (
       Totalmente gratuíta e disponível para toda região.
     </Text>
 
-    <Button
-      type="button"
-    >
-      Fazer login
-    </Button>
+    <div className="buttons">
+      <Button
+        type="button"
+      >
+        Fazer login
+      </Button>
+
+      <Button
+        type="button"
+        variant="secondary"
+      >
+        Ainda não tenho cadastro
+      </Button>
+    </div>
   </S.Container>
 );

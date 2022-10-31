@@ -13,8 +13,11 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.colors.slate[200]};
   }
 
-  button {
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
     margin-top: 3.6rem;
   }
-
 `;

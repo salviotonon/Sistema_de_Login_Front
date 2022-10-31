@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
-export const Button = ({ children, ...props }) => (
+export const Button = ({ variant, children, ...props }) => (
   <S.StyledButton
+    variant={variant}
     {...props}
   >
     {children}
@@ -11,5 +12,10 @@ export const Button = ({ children, ...props }) => (
 );
 
 Button.propTypes = {
+  variant: PropTypes.oneOf(['main', 'secondary', 'danger']),
   children: PropTypes.node.isRequired,
+};
+
+Button.defaultProps = {
+  variant: 'main',
 };
