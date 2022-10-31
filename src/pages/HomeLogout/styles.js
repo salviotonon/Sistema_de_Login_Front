@@ -1,21 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  height: 100vh;
-
-  img {
-    width: 128px;
-    height: 128px;
-    border-radius: 64px;
-
-    margin-top: 20vh;
-    margin-bottom: 3.2rem;
-  }
+  padding: 2.4rem 0;
 
   h1 {
     margin-bottom: 0.8rem;
@@ -25,8 +14,15 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.colors.slate[200]};
   }
 
-  button {
-    margin-top: 6.4rem;
-  }
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 
+    margin-top: 3.6rem;
+
+    #app-btn {
+      width: 40rem;
+    }
+  }
 `;

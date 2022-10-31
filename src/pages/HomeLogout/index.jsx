@@ -7,17 +7,28 @@ import * as S from './styles';
 export const HomeLogout = () => (
   <S.Container>
     <Heading heading="h1">
-      Login
+      Faça login para acessar nossa plataforma!
     </Heading>
 
     <Text setFontSize="large">
-      Faça login para continuar
+      Totalmente gratuíta e disponível para toda região.
     </Text>
 
-    <Button
-      type="button"
-    >
-      Fazer login
-    </Button>
+    <div className="buttons">
+      <Button
+        type="button"
+        to="/login"
+      >
+        Fazer login
+      </Button>
+
+      <Button
+        type="button"
+        variant="secondary"
+        to="/signup"
+      >
+        Ainda não tenho cadastro
+      </Button>
+    </div>
   </S.Container>
 );

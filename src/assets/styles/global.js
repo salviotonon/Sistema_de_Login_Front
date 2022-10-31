@@ -20,6 +20,10 @@ export default createGlobalStyle`
       color: ${theme.colors.white};
       background-color: ${theme.colors.slate[700]};
 
+      button {
+        cursor: pointer;
+      }
+
       h1 {
         font-size: ${theme.size.h1};
       }
@@ -31,8 +35,20 @@ export default createGlobalStyle`
       h3 {
         font-size: ${theme.size.h3};
       }
+
+      p, span, a {
+        font-size: ${theme.size.medium};
+      }
+
+      small {
+        font-size: ${theme.size.small};
+      }
     `};
   }
 
-
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 50%;
+    }
+  }
 `;
