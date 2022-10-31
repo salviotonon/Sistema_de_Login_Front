@@ -15,14 +15,25 @@ export const Login = () => (
       <Input
         labelName="Nome do usuário"
         icon={User}
+        placeholder="Digite seu nome de usuário"
       />
-      <Input
-        labelName="Senha"
-        icon={LockKey}
-      />
-      <LabelButton to="/Signup">Não possui conta?</LabelButton>
-      <LabelButton to="/Signup">Esqueceu sua senha?</LabelButton>
-      <Button>Login</Button>
+      <S.StyledForm>
+        <Input
+          labelName="Senha"
+          icon={LockKey}
+          placeholder="***************"
+        />
+      </S.StyledForm>
+      <div className='box-label-button'>
+        <LabelButton to="/Signup">Não possui conta?</LabelButton>
+        <LabelButton to="/Signup">Esqueceu sua senha?</LabelButton>
+      </div>
+      <Button
+        className="btn"
+        variant="main"
+      >
+        Login
+      </Button>
     </div>
   </S.Container>
 );
