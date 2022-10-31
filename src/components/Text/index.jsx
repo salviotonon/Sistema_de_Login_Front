@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 
 import * as S from './styles';
 
-export const Text = ({ size, children, asChild }) => {
+export const Text = ({
+  size, children, asChild, ...props
+}) => {
   const Component = asChild ? Slot : 'span';
 
   return (
-    <S.Container size={size}>
+    <S.Container size={size} {...props}>
       <Component>
         {children}
       </Component>
