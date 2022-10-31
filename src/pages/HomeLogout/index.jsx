@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 import { Button } from '../../components/Button';
 import { Heading } from '../../components/Heading';
 import { Text } from '../../components/Text';
