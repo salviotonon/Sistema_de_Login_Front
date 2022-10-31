@@ -31,6 +31,14 @@ export default createGlobalStyle`
       h3 {
         font-size: ${theme.size.h3};
       }
+
+      p, span, a {
+        font-size: ${theme.size.medium};
+      }
+
+      small {
+        font-size: ${theme.size.small};
+      }
     `};
   }
 
