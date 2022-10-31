@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: ;
+  align-items: center;
   justify-content: space-between;
 
   padding: 2.4rem 3.2rem;
@@ -41,5 +41,10 @@ export const Container = styled.div`
         height: 4.4rem;
       }
     }
+  }
+
+  @media screen and (max-width: 632px) {
+    // TODO: criar o botão de menu
+    // TODO: criar funcionalidade para o botão de menu
   }
 `;
