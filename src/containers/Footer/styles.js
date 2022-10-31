@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.slate[900]};
-  padding: 6.4rem 0;
+  padding: 4.8rem 0;
 
   h3 {
     font-weight: 600;
