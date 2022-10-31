@@ -50,6 +50,7 @@ export const ButtonContainer = styled.div`
   button, a {
     display: flex;
     justify-content: center;
+    height: 40px;
 
     color: inherit;
     font-size: inherit;

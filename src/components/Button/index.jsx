@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 
 export const Button = ({
-  variant, children, isLink, disabled, ...props
+  variant, children, disabled, to, ...props
 }) => {
-  const Component = isLink ? Link : 'button';
+  const Component = to ? Link : 'button';
 
   const handleDisabledAnchor = useCallback((event) => {
     if (disabled) {
@@ -21,6 +21,7 @@ export const Button = ({
         id="app-btn"
         onClick={handleDisabledAnchor}
         disabled={disabled}
+        to={to}
         {...props}
       >
         {children}
@@ -34,10 +35,12 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   isLink: PropTypes.bool,
   disabled: PropTypes.bool,
+  to: PropTypes.any,
 };
 
 Button.defaultProps = {
   variant: 'main',
   isLink: false,
   disabled: false,
+  to: undefined,
 };

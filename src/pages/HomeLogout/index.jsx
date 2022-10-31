@@ -20,7 +20,6 @@ export const HomeLogout = () => (
       <Button
         type="button"
         to="/login"
-        isLink
       >
         Fazer login
       </Button>
