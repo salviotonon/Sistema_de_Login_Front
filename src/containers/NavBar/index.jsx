@@ -3,12 +3,11 @@ import { NavSelecter } from '../../components/NavSelecter';
 
 import { NavStyled } from './styles';
 
-export const NavLink = () => (
+export const NavBar = () => (
   <NavStyled>
     <NavSelecter
       to="/"
       icon={House}
-      selected
     >
       Home
     </NavSelecter>

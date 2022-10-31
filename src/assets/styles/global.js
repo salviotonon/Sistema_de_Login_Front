@@ -20,6 +20,10 @@ export default createGlobalStyle`
       color: ${theme.colors.white};
       background-color: ${theme.colors.slate[700]};
 
+      button {
+        cursor: pointer;
+      }
+
       h1 {
         font-size: ${theme.size.h1};
       }
