@@ -10,22 +10,24 @@ import * as S from './styles';
 
 export const Header = ({ isAuthenticated }) => (
   <S.Container>
-    <div className="logo-and-nav">
-      <Logo />
+    <div className="fixed-content">
+      <div className="logo-and-nav">
+        <Logo />
+        {isAuthenticated && (
+          <NavBar />
+        )}
+      </div>
+
       {isAuthenticated && (
-        <NavBar />
+        <div className="profile-and-logout">
+          <Link to="/profile" id="btn-avatar">
+            <img src={felipeAvatar} alt="Avatar" id="avatar" />
+          </Link>
+
+          <LogoutButton />
+        </div>
       )}
     </div>
-
-    {isAuthenticated && (
-      <div className="profile-and-logout">
-        <Link to="/profile" id="btn-avatar">
-          <img src={felipeAvatar} alt="Avatar" id="avatar" />
-        </Link>
-
-        <LogoutButton />
-      </div>
-    )}
   </S.Container>
 );
 
@@ -34,5 +36,5 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  isAuthenticated: false,
+  isAuthenticated: true,
 };
