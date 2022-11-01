@@ -13,7 +13,6 @@ export default createGlobalStyle`
   }
 
   body {
-
     ${({ theme }) => css`
 
       font-family: ${theme.font};
@@ -22,6 +21,11 @@ export default createGlobalStyle`
 
       button {
         cursor: pointer;
+        font-family: inherit;
+      }
+
+      input {
+        font-family: inherit;
       }
 
       h1 {

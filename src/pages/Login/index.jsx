@@ -1,4 +1,6 @@
-import { User, LockKey, EyeSlash, Eye} from 'phosphor-react';
+import {
+  User, LockKey, EyeSlash, Eye,
+} from 'phosphor-react';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
 import { LabelButton } from '../../components/LabelButton';
@@ -28,7 +30,7 @@ export const Login = () => (
           iconHiddenShowPassword={Eye}
         />
       </S.StyledForm>
-      <div className='box-label-button'>
+      <div className="box-label-button">
         <LabelButton to="/Signup">Não possui conta?</LabelButton>
         <LabelButton to="/Signup">Esqueceu sua senha?</LabelButton>
       </div>

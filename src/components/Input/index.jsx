@@ -1,17 +1,34 @@
 import PropTypes from 'prop-types';
-import { useState } from "react"
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 
 import * as S from './styles';
 
 export const Input = ({
-  labelName, icon, errorFeedback, iconShowPassword, iconHiddenShowPassword, ...props
+  labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
 }) => {
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputRef = useRef(null);
 
   const IconComponent = icon;
-  const IconShowPasswordComponent = iconShowPassword;
-  const IconHiddenPasswordComponent = iconHiddenShowPassword;
+  const RightIconComponent = rightIcon;
 
-  const [show, setShow] = useState(true);
+  const handleFocusInput = useCallback(() => {
+    setIsInputFocused(true);
+  }, [isInputFocused]);
+
+  const handleBlurInput = useCallback(() => {
+    setIsInputFocused(false);
+  }, [isInputFocused]);
+
+  useEffect(() => {
+    if (isInputFocused) {
+      inputRef.current.focus();
+    } else {
+      inputRef.current.blur();
+    }
+  }, [isInputFocused]);
 
   return (
     <S.InputGroup>
@@ -21,27 +38,28 @@ export const Input = ({
         </S.InputLabel>
       )}
 
-      <S.InputBoxContainer hasError={!!errorFeedback}>
+      <S.InputBoxContainer
+        role="button"
+        hasError={!!errorFeedback}
+        isFocused={isInputFocused}
+        onClick={handleFocusInput}
+        onBlur={handleBlurInput}
+        onMouseDown={(event) => {
+          event.preventDefault();
+          handleFocusInput();
+        }}
+      >
         {icon && (
           <S.InputIcon>
             <IconComponent />
           </S.InputIcon>
         )}
-        {props.type === "password" && (
-          <S.InputStyled 
-          {...props}
-          type={show ? "password" : "text"}
-           />
-          )}
-          {props.type !== "password" && <S.InputStyled {... props}/>}
-  
-        {props.type === "password" && (
-          <S.InputIcon onClick={() => setShow(!show)}>
-            {show && <IconShowPasswordComponent />}
-            {!show && <IconHiddenPasswordComponent />}
+        <S.InputStyled ref={inputRef} {...props} />
+        {rightIcon && (
+          <S.InputIcon id="right-icon" hasAction={!!onRightIconClick}>
+            <RightIconComponent onClick={onRightIconClick} />
           </S.InputIcon>
         )}
-
       </S.InputBoxContainer>
       {errorFeedback && (
         <S.InputErrorFeedback>
@@ -55,11 +73,15 @@ export const Input = ({
 Input.propTypes = {
   labelName: PropTypes.string,
   icon: PropTypes.object,
+  rightIcon: PropTypes.object,
+  onRightIconClick: PropTypes.func,
   errorFeedback: PropTypes.string,
 };
 
 Input.defaultProps = {
   labelName: undefined,
   icon: undefined,
+  rightIcon: undefined,
+  onRightIconClick: undefined,
   errorFeedback: undefined,
 };

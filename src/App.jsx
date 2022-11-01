@@ -1,9 +1,10 @@
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
-import theme from './assets/styles/themes/default';
+import GlobalStyle from './styles/global';
+import theme from './styles/themes/default';
+
 import { MainRoutes } from './Routes';
-import GlobalStyle from './assets/styles/global';
 
 export const App = () => (
   <BrowserRouter>
