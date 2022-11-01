@@ -6,12 +6,13 @@ import {
 import * as S from './styles';
 
 export const Input = ({
-  labelName, icon, errorFeedback, ...props
+  labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
 }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const inputRef = useRef(null);
 
   const IconComponent = icon;
+  const RightIconComponent = rightIcon;
 
   const handleFocusInput = useCallback(() => {
     setIsInputFocused(true);
@@ -54,7 +55,11 @@ export const Input = ({
           </S.InputIcon>
         )}
         <S.InputStyled ref={inputRef} {...props} />
-
+        {rightIcon && (
+          <S.InputIcon id="right-icon" hasAction={!!onRightIconClick}>
+            <RightIconComponent onClick={onRightIconClick} />
+          </S.InputIcon>
+        )}
       </S.InputBoxContainer>
       {errorFeedback && (
         <S.InputErrorFeedback>
@@ -68,11 +73,15 @@ export const Input = ({
 Input.propTypes = {
   labelName: PropTypes.string,
   icon: PropTypes.object,
+  rightIcon: PropTypes.object,
+  onRightIconClick: PropTypes.func,
   errorFeedback: PropTypes.string,
 };
 
 Input.defaultProps = {
   labelName: undefined,
   icon: undefined,
+  rightIcon: undefined,
+  onRightIconClick: undefined,
   errorFeedback: undefined,
 };

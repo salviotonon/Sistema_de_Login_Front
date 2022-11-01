@@ -54,6 +54,17 @@ export const InputIcon = styled.span`
   svg {
     width: 2.6rem;
     height: 2.6rem;
+
+  }
+
+  &#right-icon {
+    color: ${({ theme }) => theme.colors.gray[300]};
+
+    ${({ hasAction }) => hasAction && css`
+      &:hover {
+        cursor: pointer;
+      }
+    `}
   }
 `;
 
