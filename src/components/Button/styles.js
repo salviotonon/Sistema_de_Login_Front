@@ -51,6 +51,7 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     height: 40px;
+    
 
     color: inherit;
     font-size: inherit;

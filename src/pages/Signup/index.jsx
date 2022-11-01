@@ -1,4 +1,4 @@
-import { Envelope, Lock, User } from 'phosphor-react';
+import { Envelope, User, LockKey,Lock, EyeSlash, Eye} from 'phosphor-react';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
 import { Text } from '../../components/Text';
@@ -35,6 +35,9 @@ export const Signup = () => (
           type="password"
           placeholder="*********"
           labelName="Senha"
+          icon={Lock}
+          iconShowPassword={EyeSlash}
+          iconHiddenShowPassword={Eye}
         />
 
         <Input
@@ -42,6 +45,8 @@ export const Signup = () => (
           placeholder="*********"
           labelName="Confirmar senha"
           icon={Lock}
+          iconShowPassword={EyeSlash}
+          iconHiddenShowPassword={Eye}
         />
 
       </S.FormStyled>

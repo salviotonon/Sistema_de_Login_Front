@@ -22,6 +22,10 @@ export const Container = styled.div`
     margin-bottom: 2.8rem;
 }
 
+#app-btn {
+      width: 40rem;
+    }
+
 .subtitle {
       margin-top: 0.8rem;
       padding-bottom: 3.6rem;
@@ -36,6 +40,14 @@ export const StyledForm = styled.form`
     ${InputStyles.InputGroup} + ${InputStyles.InputGroup} {
     margin-top: 1.6rem;
 
+    span svg {
+        cursor: pointer;
+    }
+    .show-password{
+        cursor: pointer;
+    }
+
 }`;
+
 
 

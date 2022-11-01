@@ -1,11 +1,17 @@
 import PropTypes from 'prop-types';
+import { useState } from "react"
 
 import * as S from './styles';
 
 export const Input = ({
-  labelName, icon, errorFeedback, ...props
+  labelName, icon, errorFeedback, iconShowPassword, iconHiddenShowPassword, ...props
 }) => {
+
   const IconComponent = icon;
+  const IconShowPasswordComponent = iconShowPassword;
+  const IconHiddenPasswordComponent = iconHiddenShowPassword;
+
+  const [show, setShow] = useState(true);
 
   return (
     <S.InputGroup>
@@ -21,7 +27,20 @@ export const Input = ({
             <IconComponent />
           </S.InputIcon>
         )}
-        <S.InputStyled {...props} />
+        {props.type === "password" && (
+          <S.InputStyled 
+          {...props}
+          type={show ? "password" : "text"}
+           />
+          )}
+          {props.type !== "password" && <S.InputStyled {... props}/>}
+  
+        {props.type === "password" && (
+          <S.InputIcon onClick={() => setShow(!show)}>
+            {show && <IconShowPasswordComponent />}
+            {!show && <IconHiddenPasswordComponent />}
+          </S.InputIcon>
+        )}
 
       </S.InputBoxContainer>
       {errorFeedback && (

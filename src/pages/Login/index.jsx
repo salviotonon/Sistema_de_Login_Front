@@ -1,4 +1,4 @@
-import { User, LockKey } from 'phosphor-react';
+import { User, LockKey, EyeSlash, Eye} from 'phosphor-react';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
 import { LabelButton } from '../../components/LabelButton';
@@ -13,15 +13,19 @@ export const Login = () => (
       <Heading>Login</Heading>
       <Text className="subtitle">Faça login para continuar</Text>
       <Input
+        type="text"
         labelName="Nome do usuário"
         icon={User}
         placeholder="Digite seu nome de usuário"
       />
       <S.StyledForm>
         <Input
+          type="password"
           labelName="Senha"
           icon={LockKey}
           placeholder="***************"
+          iconShowPassword={EyeSlash}
+          iconHiddenShowPassword={Eye}
         />
       </S.StyledForm>
       <div className='box-label-button'>
@@ -29,6 +33,7 @@ export const Login = () => (
         <LabelButton to="/Signup">Esqueceu sua senha?</LabelButton>
       </div>
       <Button
+        to="/login"
         className="btn"
         variant="main"
       >

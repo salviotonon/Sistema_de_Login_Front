@@ -23,7 +23,7 @@ export const InputLabel = styled.label`
 export const InputBoxContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.slate[600]};
   border-radius: 8px;
-  padding: 1.2rem 1.2rem;
+  padding: 0.4rem 1.2rem;
   width: 400px;
   height: 50px;
   border: 2px solid transparent;
@@ -53,6 +53,7 @@ export const InputIcon = styled.span`
 export const InputStyled = styled.input`
   background-color: transparent;
   border: none;
+  height: 50px;
   outline: 0;
   color: ${({ theme }) => theme.colors.white};
   font-size: ${({ theme }) => theme.size.medium};
