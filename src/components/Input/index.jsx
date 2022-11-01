@@ -1,11 +1,33 @@
 import PropTypes from 'prop-types';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 
 import * as S from './styles';
 
 export const Input = ({
   labelName, icon, errorFeedback, ...props
 }) => {
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputRef = useRef(null);
+
   const IconComponent = icon;
+
+  const handleFocusInput = useCallback(() => {
+    setIsInputFocused(true);
+  }, [isInputFocused]);
+
+  const handleBlurInput = useCallback(() => {
+    setIsInputFocused(false);
+  }, [isInputFocused]);
+
+  useEffect(() => {
+    if (isInputFocused) {
+      inputRef.current.focus();
+    } else {
+      inputRef.current.blur();
+    }
+  }, [isInputFocused]);
 
   return (
     <S.InputGroup>
@@ -15,13 +37,23 @@ export const Input = ({
         </S.InputLabel>
       )}
 
-      <S.InputBoxContainer hasError={!!errorFeedback}>
+      <S.InputBoxContainer
+        role="button"
+        hasError={!!errorFeedback}
+        isFocused={isInputFocused}
+        onClick={handleFocusInput}
+        onBlur={handleBlurInput}
+        onMouseDown={(event) => {
+          event.preventDefault();
+          handleFocusInput();
+        }}
+      >
         {icon && (
           <S.InputIcon>
             <IconComponent />
           </S.InputIcon>
         )}
-        <S.InputStyled {...props} />
+        <S.InputStyled ref={inputRef} {...props} />
 
       </S.InputBoxContainer>
       {errorFeedback && (

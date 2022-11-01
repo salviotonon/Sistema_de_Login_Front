@@ -33,8 +33,15 @@ export const InputBoxContainer = styled.div`
   align-items: center;
   gap: 0.4rem;
 
+  cursor: text;
+
   ${({ theme, hasError }) => hasError && css`
     border-color: ${theme.colors.red[400]} !important;
+  `}
+
+  ${({ theme, isFocused }) => isFocused && css`
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.gray[700]};
   `}
 
   &:hover {
@@ -54,7 +61,8 @@ export const InputStyled = styled.input`
   background-color: transparent;
   border: none;
   outline: 0;
-  color: ${({ theme }) => theme.colors.white};
+  color: inherit;
+  font-weight: 500;
   font-size: ${({ theme }) => theme.size.medium};
 
   flex: 1;
