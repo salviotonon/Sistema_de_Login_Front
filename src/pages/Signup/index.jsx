@@ -35,6 +35,7 @@ export const Signup = () => (
           type="password"
           placeholder="*********"
           labelName="Senha"
+          icon={Lock}
         />
 
         <Input
