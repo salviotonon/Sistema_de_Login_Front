@@ -9,12 +9,13 @@ export const Container = styled.div`
     overflow: hidden;
     width: fit-content;
     margin: auto;
-    padding: 2.8rem 3.2rem;
+    
 
 .content {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2.8rem 3.2rem;
 }
 .box-label-button{
     display: flex;
@@ -48,6 +49,11 @@ export const StyledForm = styled.form`
     }
 
 }`;
+
+export const EmptyFooter = styled.footer`
+  background-color: ${({ theme }) => theme.colors.slate[900]};
+  height: 6.4rem;
+`;
 
 
 

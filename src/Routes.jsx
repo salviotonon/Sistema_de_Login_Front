@@ -99,7 +99,7 @@ export const MainRoutes = () => (
     <Route
       path="/about"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute>
           <About />
         </CustomRoute>
       )}
