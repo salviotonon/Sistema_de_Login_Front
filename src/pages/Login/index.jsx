@@ -5,15 +5,29 @@ import { LabelButton } from '../../components/LabelButton';
 import { Text } from '../../components/Text';
 import { Button } from '../../components/Button';
 
+//formik
+import { useFormik } from 'formik'
+
 import * as S from './styles';
 
-export const Login = () => (
+export const Login = () => {
+    const formik = useFormik({
+      initialValues: {
+        username: "",
+      }
+    })
+    console.log(formik)
+   
+  return (
   <S.Container>
     <div className="content">
       <Heading>Login</Heading>
       <Text className="subtitle">Faça login para continuar</Text>
       <Input
+        name='username'
         type="text"
+        value={formik.values.email}
+        onChange={formik.handleChange}
         labelName="Nome do usuário"
         icon={User}
         placeholder="Digite seu nome de usuário"
@@ -40,5 +54,7 @@ export const Login = () => (
         Login
       </Button>
     </div>
+    <S.EmptyFooter />
   </S.Container>
-);
+)
+};
