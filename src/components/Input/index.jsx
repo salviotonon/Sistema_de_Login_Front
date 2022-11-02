@@ -22,8 +22,8 @@ export const Input = ({
     setIsInputFocused(true);
   }, [isInputFocused]);
 
-  const handleBlurInput = useCallback(() => {
-    if (isInputBoxHovered.current) {
+  const handleBlurInput = useCallback((event) => {
+    if (isInputBoxHovered.current && !event.relatedTarget) {
       inputRef.current.focus();
       return;
     }
