@@ -1,8 +1,9 @@
 import {
-  Envelope, User, Lock, EyeSlash,
+  Envelope, User,
 } from 'phosphor-react';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
+import { InputPassword } from '../../components/Input/InputPassword';
 import { Text } from '../../components/Text';
 
 import * as S from './styles';
@@ -33,21 +34,9 @@ export const Signup = () => (
           icon={Envelope}
         />
 
-        <Input
-          type="password"
-          placeholder="*********"
-          labelName="Senha"
-          icon={Lock}
-          rightIcon={EyeSlash}
-        />
+        <InputPassword labelName="Senha" />
 
-        <Input
-          type="password"
-          placeholder="*********"
-          labelName="Confirmar senha"
-          icon={Lock}
-          rightIcon={EyeSlash}
-        />
+        <InputPassword labelName="Confirmar senha" />
 
       </S.FormStyled>
     </div>
