@@ -5,8 +5,6 @@ import {
 
 import * as S from './styles';
 
-// Questão de acessibilidade e Design UX para ser resolvida:
-// Quando o elemento input está com foco, a navegação por TAB não funciona.
 export const Input = ({
   labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
 }) => {

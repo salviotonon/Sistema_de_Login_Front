@@ -25,21 +25,25 @@ export const Signup = () => {
 
   const isFormValid = name && email && password && confirmPassword && !hasError;
 
-  const handleNameChange = useCallback((event) => {
-    const { value } = event.target;
-
+  const handleNameValidation = useCallback((value) => {
     if (!value) {
       setError({ field: 'name', message: 'Nome é obrigatório' });
     } else {
       removeError('name');
     }
+  }, [setError, removeError]);
 
-    setName(value);
-  }, [name, setName]);
-
-  const handleEmailChange = useCallback((event) => {
+  const handleNameChange = useCallback((event) => {
     const { value } = event.target;
 
+    setName(() => {
+      handleNameValidation(value);
+
+      return value;
+    });
+  }, [name, setName]);
+
+  const handleEmailValidation = useCallback((value) => {
     if (!value) {
       setError({ field: 'email', message: 'E-mail é obrigatório' });
     } else if (!isEmailValid(value)) {
@@ -47,35 +51,59 @@ export const Signup = () => {
     } else {
       removeError('email');
     }
+  }, [setError, removeError]);
 
-    setEmail(value);
+  const handleEmailChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setEmail(() => {
+      handleEmailValidation(value);
+
+      return value;
+    });
   }, [email, setEmail]);
 
-  const handlePasswordChange = useCallback((event) => {
-    const { value } = event.target;
-
-    if (!value) {
-      setError({ field: 'password', message: 'Senha é obrigatória' });
-    } else {
-      removeError('password');
-    }
-
-    setPassword(value);
-  }, [password, setPassword]);
-
-  const handleConfirmPasswordChange = useCallback((event) => {
-    const { value } = event.target;
-
+  const handleConfirmPasswordValidation = useCallback((value, newPasswordSetted) => {
     if (!value) {
       setError({ field: 'confirmPassword', message: 'Confirmar senha é obrigatório' });
-    } else if (value !== password) {
+    } else if (value !== (newPasswordSetted || password)) {
       setError({ field: 'confirmPassword', message: 'As senhas não coincidem' });
     } else {
       removeError('confirmPassword');
     }
+  }, [password, setError, removeError]);
 
-    setConfirmPassword(value);
+  const handleConfirmPasswordChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setConfirmPassword(() => {
+      handleConfirmPasswordValidation(value);
+
+      return value;
+    });
   }, [confirmPassword, setConfirmPassword]);
+
+  const handlePasswordValidation = useCallback((value) => {
+    if (!value) {
+      setError({ field: 'password', message: 'Senha é obrigatória' });
+    } else if (value.length < 3) {
+      setError({ field: 'password', message: 'Sua senha deve ter pelo menos 3 caracteres' });
+    } else {
+      removeError('password');
+    }
+
+    handleConfirmPasswordValidation(confirmPassword, value);
+  }, [confirmPassword, setError, removeError]);
+
+  const handlePasswordChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setPassword(() => {
+      handlePasswordValidation(value);
+
+      return value;
+    });
+  }, [password, setPassword]);
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
