@@ -11,7 +11,7 @@ export const Container = styled.div`
 
     max-width: 1440px;
     margin: auto;
-    padding: 2.4rem 3.2rem;
+    padding: 1.6rem 2.8rem;
 
     .logo-and-nav {
       display: flex;

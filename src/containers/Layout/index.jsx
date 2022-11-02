@@ -8,7 +8,7 @@ import * as S from './styles';
 export const Layout = ({ children }) => (
   <S.Container>
     <Header />
-    <div>
+    <div id="main-content">
       {children}
     </div>
     <Footer />

@@ -6,4 +6,8 @@ export const Container = styled.div`
   justify-content: space-between;
 
   min-height: 100vh;
+
+  #main-content {
+    padding: 1.6rem 0;
+  }
 `;

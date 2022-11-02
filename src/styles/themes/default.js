@@ -36,9 +36,9 @@ export default {
     h2: '2.4rem',
     h3: '2rem',
 
-    large: '1.8rem',
-    medium: '1.6rem',
-    small: '1.4rem',
+    large: '1.6rem',
+    medium: '1.4rem',
+    small: '1.2rem',
   },
 
 };
