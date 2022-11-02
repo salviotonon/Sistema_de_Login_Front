@@ -71,7 +71,6 @@ export const Input = ({
         onClick={handleFocusInput}
         onBlur={handleBlurInput}
         onMouseDown={() => {
-          // event.preventDefault();
           handleFocusInput();
         }}
       >
