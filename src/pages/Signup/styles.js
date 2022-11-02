@@ -20,7 +20,23 @@ export const Container = styled.div`
       margin-top: 0.8rem;
       color: ${({ theme }) => theme.colors.slate[200]};
     }
+
+    .sub-actions {
+      margin-top: 1.6rem;
+
+      display: flex;
+      justify-content: center;
+    }
+
+    .actions {
+      margin-top: 2.4rem;
+
+      button {
+        width: 100%;
+      }
+    }
   }
+
 `;
 
 export const FormStyled = styled.form`

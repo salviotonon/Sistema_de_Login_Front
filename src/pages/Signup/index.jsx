@@ -1,45 +1,70 @@
 import {
   Envelope, User,
 } from 'phosphor-react';
+import { useCallback } from 'react';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
 import { InputPassword } from '../../components/Input/InputPassword';
 import { Text } from '../../components/Text';
+import { LabelButton } from '../../components/LabelButton';
+import { Button } from '../../components/Button';
 
 import * as S from './styles';
 
-export const Signup = () => (
-  <S.Container>
-    <div className="content">
-      <Heading heading="h2">
-        Cadastrar
-      </Heading>
+export const Signup = () => {
+  const handleSubmit = useCallback((event) => {
+    event.preventDefault();
 
-      <Text className="subtitle">
-        Cadastre-se para continuar
-      </Text>
+    console.log('[register] submit!');
+  }, []);
 
-      <S.FormStyled>
-        <Input
-          type="text"
-          placeholder="Digite seu nome de usuário"
-          labelName="Nome do usuário"
-          icon={User}
-        />
+  return (
+    <S.Container>
+      <div className="content">
+        <Heading heading="h2">
+          Cadastrar
+        </Heading>
 
-        <Input
-          type="email"
-          placeholder="Digite seu e-mail"
-          labelName="E-mail"
-          icon={Envelope}
-        />
+        <Text className="subtitle">
+          Cadastre-se para continuar
+        </Text>
 
-        <InputPassword labelName="Senha" />
+        <S.FormStyled onSubmit={handleSubmit}>
+          <Input
+            type="text"
+            placeholder="Digite seu nome de usuário"
+            labelName="Nome do usuário"
+            icon={User}
+          />
 
-        <InputPassword labelName="Confirmar senha" />
+          <Input
+            type="email"
+            placeholder="Digite seu e-mail"
+            labelName="E-mail"
+            icon={Envelope}
+          />
 
-      </S.FormStyled>
-    </div>
-    <S.EmptyFooter />
-  </S.Container>
-);
+          <InputPassword labelName="Senha" />
+
+          <InputPassword labelName="Confirmar senha" />
+
+          <div className="sub-actions">
+            <LabelButton to="/login">
+              Já possui uma conta?
+            </LabelButton>
+          </div>
+
+          <div className="actions">
+            <Button
+              type="submit"
+            >
+              Fazer cadastro
+            </Button>
+          </div>
+
+        </S.FormStyled>
+      </div>
+      <S.EmptyFooter />
+    </S.Container>
+  );
+};
