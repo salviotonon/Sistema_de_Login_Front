@@ -42,7 +42,7 @@ export const Login = () => {
               Não possui conta?
             </LabelButton>
 
-            <LabelButton type="button">
+            <LabelButton to="/forgotpassword">
               Esqueceu sua senha?
             </LabelButton>
           </div>
