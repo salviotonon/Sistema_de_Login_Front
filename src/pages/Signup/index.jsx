@@ -1,7 +1,7 @@
 import {
   Envelope, User,
 } from 'phosphor-react';
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
 import { InputPassword } from '../../components/Input/InputPassword';
@@ -12,6 +12,35 @@ import { Button } from '../../components/Button';
 import * as S from './styles';
 
 export const Signup = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleNameChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setName(value);
+  }, [name, setName]);
+
+  const handleEmailChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setEmail(value);
+  }, [email, setEmail]);
+
+  const handlePasswordChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setPassword(value);
+  }, [password, setPassword]);
+
+  const handleConfirmPasswordChange = useCallback((event) => {
+    const { value } = event.target;
+
+    setConfirmPassword(value);
+  }, [confirmPassword, setConfirmPassword]);
+
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
 
@@ -31,6 +60,8 @@ export const Signup = () => {
 
         <S.FormStyled onSubmit={handleSubmit}>
           <Input
+            value={name}
+            onChange={handleNameChange}
             type="text"
             placeholder="Digite seu nome de usuário"
             labelName="Nome do usuário"
@@ -38,15 +69,25 @@ export const Signup = () => {
           />
 
           <Input
+            value={email}
+            onChange={handleEmailChange}
             type="email"
             placeholder="Digite seu e-mail"
             labelName="E-mail"
             icon={Envelope}
           />
 
-          <InputPassword labelName="Senha" />
+          <InputPassword
+            value={password}
+            onChange={handlePasswordChange}
+            labelName="Senha"
+          />
 
-          <InputPassword labelName="Confirmar senha" />
+          <InputPassword
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+            labelName="Confirmar senha"
+          />
 
           <div className="sub-actions">
             <LabelButton to="/login">
