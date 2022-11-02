@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle, css } from 'styled-components';
 
 export default createGlobalStyle`
 
@@ -13,17 +13,25 @@ export default createGlobalStyle`
   }
 
   body {
-
     ${({ theme }) => css`
-    
+
       font-family: ${theme.font};
       color: ${theme.colors.white};
       background-color: ${theme.colors.slate[700]};
 
+      button {
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      input {
+        font-family: inherit;
+      }
+
       h1 {
         font-size: ${theme.size.h1};
       }
-      
+
       h2 {
         font-size: ${theme.size.h2};
       }
@@ -31,8 +39,20 @@ export default createGlobalStyle`
       h3 {
         font-size: ${theme.size.h3};
       }
+
+      p, span, a {
+        font-size: ${theme.size.medium};
+      }
+
+      small {
+        font-size: ${theme.size.small};
+      }
     `};
   }
 
-
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 50%;
+    }
+  }
 `;

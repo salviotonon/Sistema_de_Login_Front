@@ -1,28 +1,34 @@
-import AvatarImg from '../../assets/images/salvioton.jpg'
 import { Button } from '../../components/Button';
+import { Heading } from '../../components/Heading';
 import { Text } from '../../components/Text';
 
 import * as S from './styles';
 
-export const HomeLogout = () => {
+export const HomeLogout = () => (
+  <S.Container>
+    <Heading heading="h1">
+      Faça login para acessar nossa plataforma!
+    </Heading>
 
+    <Text setFontSize="large">
+      Totalmente gratuíta e disponível para toda região.
+    </Text>
 
-  return (
-    <S.Container>
-      <img src={AvatarImg} alt="Avatar" />
-      <h1>
-        Login
-      </h1>
-
-      <Text setFontSize='large'>
-        Faça login para continuar
-      </Text>
-
+    <div className="buttons">
       <Button
         type="button"
+        to="/login"
       >
         Fazer login
       </Button>
-    </S.Container>
-  );
-};
+
+      <Button
+        type="button"
+        variant="secondary"
+        to="/signup"
+      >
+        Ainda não tenho cadastro
+      </Button>
+    </div>
+  </S.Container>
+);
