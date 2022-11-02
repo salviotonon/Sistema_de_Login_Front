@@ -9,7 +9,9 @@ export const Input = ({
   labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
 }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputBoxRef = useRef(null);
   const inputRef = useRef(null);
+  const isInputBoxHovered = useRef(false);
 
   const IconComponent = icon;
   const RightIconComponent = rightIcon;
@@ -19,8 +21,31 @@ export const Input = ({
   }, [isInputFocused]);
 
   const handleBlurInput = useCallback(() => {
+    if (isInputBoxHovered.current) {
+      inputRef.current.focus();
+      return;
+    }
+
     setIsInputFocused(false);
   }, [isInputFocused]);
+
+  useEffect(() => {
+    function handleHoverInputBox() {
+      isInputBoxHovered.current = true;
+    }
+
+    function handleStopHoverInputBox() {
+      isInputBoxHovered.current = false;
+    }
+
+    inputBoxRef.current.addEventListener('mouseenter', handleHoverInputBox);
+    inputBoxRef.current.addEventListener('mouseleave', handleStopHoverInputBox);
+
+    return () => {
+      inputBoxRef.current.removeEventListener('mouseenter', handleHoverInputBox);
+      inputBoxRef.current.removeEventListener('mouseleave', handleStopHoverInputBox);
+    };
+  }, [inputBoxRef]);
 
   useEffect(() => {
     if (isInputFocused) {
@@ -40,12 +65,13 @@ export const Input = ({
 
       <S.InputBoxContainer
         role="button"
+        ref={inputBoxRef}
         hasError={!!errorFeedback}
         isFocused={isInputFocused}
         onClick={handleFocusInput}
         onBlur={handleBlurInput}
-        onMouseDown={(event) => {
-          event.preventDefault();
+        onMouseDown={() => {
+          // event.preventDefault();
           handleFocusInput();
         }}
       >

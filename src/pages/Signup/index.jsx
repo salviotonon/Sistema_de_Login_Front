@@ -9,6 +9,9 @@ import { Text } from '../../components/Text';
 import { LabelButton } from '../../components/LabelButton';
 import { Button } from '../../components/Button';
 
+import { isEmailValid } from '../../utils/isEmailValid';
+import { useInputErrors } from '../../hooks/useInputErrors';
+
 import * as S from './styles';
 
 export const Signup = () => {
@@ -16,9 +19,20 @@ export const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const {
+    hasError, setError, removeError, getMessageErrorByField,
+  } = useInputErrors();
+
+  const isFormValid = name && email && password && confirmPassword && !hasError;
 
   const handleNameChange = useCallback((event) => {
     const { value } = event.target;
+
+    if (!value) {
+      setError({ field: 'name', message: 'Nome é obrigatório' });
+    } else {
+      removeError('name');
+    }
 
     setName(value);
   }, [name, setName]);
@@ -26,17 +40,39 @@ export const Signup = () => {
   const handleEmailChange = useCallback((event) => {
     const { value } = event.target;
 
+    if (!value) {
+      setError({ field: 'email', message: 'E-mail é obrigatório' });
+    } else if (!isEmailValid(value)) {
+      setError({ field: 'email', message: 'E-mail inválido' });
+    } else {
+      removeError('email');
+    }
+
     setEmail(value);
   }, [email, setEmail]);
 
   const handlePasswordChange = useCallback((event) => {
     const { value } = event.target;
 
+    if (!value) {
+      setError({ field: 'password', message: 'Senha é obrigatória' });
+    } else {
+      removeError('password');
+    }
+
     setPassword(value);
   }, [password, setPassword]);
 
   const handleConfirmPasswordChange = useCallback((event) => {
     const { value } = event.target;
+
+    if (!value) {
+      setError({ field: 'confirmPassword', message: 'Confirmar senha é obrigatório' });
+    } else if (value !== password) {
+      setError({ field: 'confirmPassword', message: 'As senhas não coincidem' });
+    } else {
+      removeError('confirmPassword');
+    }
 
     setConfirmPassword(value);
   }, [confirmPassword, setConfirmPassword]);
@@ -66,6 +102,7 @@ export const Signup = () => {
             placeholder="Digite seu nome de usuário"
             labelName="Nome do usuário"
             icon={User}
+            errorFeedback={getMessageErrorByField('name')}
           />
 
           <Input
@@ -75,18 +112,21 @@ export const Signup = () => {
             placeholder="Digite seu e-mail"
             labelName="E-mail"
             icon={Envelope}
+            errorFeedback={getMessageErrorByField('email')}
           />
 
           <InputPassword
             value={password}
             onChange={handlePasswordChange}
             labelName="Senha"
+            errorFeedback={getMessageErrorByField('password')}
           />
 
           <InputPassword
             value={confirmPassword}
             onChange={handleConfirmPasswordChange}
             labelName="Confirmar senha"
+            errorFeedback={getMessageErrorByField('confirmPassword')}
           />
 
           <div className="sub-actions">
@@ -98,6 +138,7 @@ export const Signup = () => {
           <div className="actions">
             <Button
               type="submit"
+              disabled={!isFormValid}
             >
               Fazer cadastro
             </Button>
