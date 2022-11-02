@@ -5,6 +5,8 @@ import {
 
 import * as S from './styles';
 
+// Questão de acessibilidade e Design UX para ser resolvida:
+// Quando o elemento input está com foco, a navegação por TAB não funciona.
 export const Input = ({
   labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
 }) => {
@@ -64,10 +66,12 @@ export const Input = ({
       )}
 
       <S.InputBoxContainer
-        role="button"
+        role="textbox"
+        tabIndex={0}
         ref={inputBoxRef}
         hasError={!!errorFeedback}
         isFocused={isInputFocused}
+        onFocus={handleFocusInput}
         onClick={handleFocusInput}
         onBlur={handleBlurInput}
         onMouseDown={() => {

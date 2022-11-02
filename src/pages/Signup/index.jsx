@@ -80,8 +80,12 @@ export const Signup = () => {
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
 
-    console.log('[register] submit!');
-  }, []);
+    const user = {
+      name, email, password, confirmPassword,
+    };
+
+    console.log('[register] submitting:', user);
+  }, [name, email, password, confirmPassword]);
 
   return (
     <S.Container>
