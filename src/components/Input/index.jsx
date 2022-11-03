@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {
-  useCallback, useEffect, useRef, useState,
+  useCallback, useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
 
 import * as S from './styles';
@@ -29,7 +29,7 @@ export const Input = ({
     setIsInputFocused(false);
   }, [isInputFocused]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function handleHoverInputBox() {
       isInputBoxHovered.current = true;
     }
@@ -45,7 +45,7 @@ export const Input = ({
       inputBoxRef.current.removeEventListener('mouseenter', handleHoverInputBox);
       inputBoxRef.current.removeEventListener('mouseleave', handleStopHoverInputBox);
     };
-  }, [inputBoxRef]);
+  }, []);
 
   useEffect(() => {
     if (isInputFocused) {
