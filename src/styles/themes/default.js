@@ -42,6 +42,7 @@ export default {
   },
 
   animations: {
+    shortDuration: '0.12s',
     duration: '0.2s',
   },
 

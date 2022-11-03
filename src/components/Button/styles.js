@@ -51,7 +51,7 @@ export const ButtonContainer = styled.div`
     display: flex;
     justify-content: center;
     height: 40px;
-    
+
 
     color: inherit;
     font-size: inherit;
@@ -60,8 +60,11 @@ export const ButtonContainer = styled.div`
     padding: 1.2rem 1.6rem;
     border-radius: 6px;
 
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.size.medium};
     font-weight: 700;
+
+    transition-property: color, background-color;
+    transition: ${({ theme }) => theme.animations.shortDuration} ease-in-out;
 
     ${({ variant }) => variants[variant || 'main']};
 
