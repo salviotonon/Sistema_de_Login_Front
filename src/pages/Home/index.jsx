@@ -1,3 +1,11 @@
+import { CardHome } from "../../components/CardHome";
+
+import * as S from './styles'
+
 export const Home = () => (
-  <h1>Home</h1>
+  <S.Container>
+    <CardHome />
+    <CardHome />
+    <CardHome />
+  </S.Container>
 );

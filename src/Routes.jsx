@@ -45,7 +45,7 @@ export const MainRoutes = () => (
     <Route
       path="/"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute>
           <Home />
         </CustomRoute>
       )}
