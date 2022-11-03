@@ -1,6 +1,7 @@
-import { Envelope, User } from 'phosphor-react';
-import PropTypes from 'prop-types';
 import { useMemo, useCallback, useState } from 'react';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { Envelope, User } from 'phosphor-react';
 
 import { Button } from '../../components/Button';
 import { Heading } from '../../components/Heading';
@@ -25,6 +26,15 @@ const dynamicContents = {
   submitButton: {
     login: 'Fazer login',
     signup: 'Fazer cadastro',
+  },
+};
+
+const itemsAnimation = {
+  show: {
+    opacity: 1,
+  },
+  closed: {
+    opacity: 0,
   },
 };
 
@@ -149,13 +159,45 @@ export const AuthForm = ({ onSubmit, type }) => {
   }, [name, email, password, confirmPassword]);
 
   return (
-    <S.Container>
-      <div className="content">
-        <Heading heading="h2">
+    <S.Container
+      as={motion.div}
+      initial={{
+        y: 40,
+        opacity: 0,
+      }}
+      animate={{
+        y: 0,
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+        },
+      }}
+    >
+      <motion.div
+        animate="show"
+        exit="closed"
+        variants={{
+          show: {
+            transition: {
+              staggerChildren: 1,
+            },
+          },
+        }}
+        className="content"
+      >
+        <Heading
+          as={motion.h2}
+          variants={itemsAnimation}
+          heading="h2"
+        >
           {dynamicContents.title[type]}
         </Heading>
 
-        <Text className="subtitle">
+        <Text
+          as={motion.span}
+          variants={itemsAnimation}
+          className="subtitle"
+        >
           {dynamicContents.subtitle[type]}
         </Text>
 
@@ -230,7 +272,7 @@ export const AuthForm = ({ onSubmit, type }) => {
           </div>
 
         </S.FormStyled>
-      </div>
+      </motion.div>
       <S.EmptyFooter />
     </S.Container>
   );
