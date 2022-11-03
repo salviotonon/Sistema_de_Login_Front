@@ -38,7 +38,6 @@ export const Container = styled.div`
       display: flex;
       justify-content: center;
     }
-
     .actions {
     display: flex;
     width: 100%;
@@ -57,4 +56,12 @@ export const Container = styled.div`
 export const EmptyFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.slate[900]};
   height: 6.4rem;
+`;
+
+export const SocialMidia = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    gap: 0.8rem;
 `;
