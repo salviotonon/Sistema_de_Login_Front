@@ -46,7 +46,7 @@ export const MainRoutes = () => (
     <Route
       path="/"
       element={(
-        <CustomRoute>
+        <CustomRoute isPrivated>
           <Home />
         </CustomRoute>
       )}
@@ -109,7 +109,7 @@ export const MainRoutes = () => (
     <Route
       path="/about"
       element={(
-        <CustomRoute>
+        <CustomRoute isPrivated>
           <About />
         </CustomRoute>
       )}
