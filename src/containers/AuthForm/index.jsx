@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { Envelope, User } from 'phosphor-react';
 
+import * as Animation from '../../configs/animations';
+
 import { Button } from '../../components/Button';
 import { Heading } from '../../components/Heading';
 import { Input } from '../../components/Input';
@@ -152,28 +154,12 @@ export const AuthForm = ({ onSubmit, type }) => {
   return (
     <S.Container
       as={motion.div}
-      initial={{
-        y: 40,
-        opacity: 0,
-      }}
-      animate={{
-        y: 0,
-        opacity: 1,
-        transition: {
-          duration: 0.5,
-        },
-      }}
+      initial={Animation.container.init}
+      animate={Animation.container.animate}
     >
       <motion.div
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{
-          scale: 1.0,
-          opacity: 1,
-          transition: {
-            delay: 0.2,
-            duration: 0.8,
-          },
-        }}
+        initial={Animation.containerContent.init}
+        animate={Animation.containerContent.animate}
         className="content"
       >
         <Heading heading="h2">
