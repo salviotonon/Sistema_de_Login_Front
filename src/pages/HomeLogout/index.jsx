@@ -1,32 +1,45 @@
+import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/AuthContext';
+
 import { Button } from '../../components/Button';
 import { Heading } from '../../components/Heading';
 import { Text } from '../../components/Text';
 
 import * as S from './styles';
 
-export const HomeLogout = () => (
-  <S.Container>
-    <Heading heading="h1">
-      Faça login para acessar nossa plataforma!
-    </Heading>
+export const HomeLogout = () => {
+  const { isAuthenticated } = useContext(AuthContext);
 
-    <Text setFontSize="large">
-      Totalmente gratuíta e disponível para toda região.
-    </Text>
+  if (isAuthenticated) {
+    return <Navigate to="/" />;
+  }
 
-    <div className="buttons">
-      <Button
-        to="/login"
-      >
-        Fazer login
-      </Button>
+  return (
+    <S.Container>
+      <Heading heading="h1">
+        Faça login para acessar nossa plataforma!
+      </Heading>
 
-      <Button
-        variant="secondary"
-        to="/signup"
-      >
-        Ainda não tenho cadastro
-      </Button>
-    </div>
-  </S.Container>
-);
+      <Text setFontSize="large">
+        Totalmente gratuíta e disponível para toda região.
+      </Text>
+
+      <div className="buttons">
+        <Button
+          to="/login"
+        >
+          Fazer login
+        </Button>
+
+        <Button
+          variant="secondary"
+          to="/signup"
+        >
+          Ainda não tenho cadastro
+        </Button>
+      </div>
+    </S.Container>
+  );
+};
