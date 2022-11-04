@@ -46,6 +46,7 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   button, a {
     display: flex;
