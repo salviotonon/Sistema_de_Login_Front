@@ -1,6 +1,5 @@
 import PropTypes, { object } from 'prop-types';
 import { Link } from 'react-router-dom';
-
 import {
   LinkedinLogo, GithubLogo, TwitterLogo, FacebookLogo, InstagramLogo,
 } from 'phosphor-react';
@@ -10,28 +9,14 @@ import { LabelButton } from '../LabelButton';
 import { Button } from '../Button';
 import { Heading } from '../Heading';
 
-
 import * as S from './styles';
 
-export const CardHome = (props) => {
-
-    return(
+export const CardAbout = ( {name, email, img, subtitle} ) => (
   <S.Container>
-    <div className="content">
+    <S.ContainerImg>
       <Link to="/about" id="avatar">
-        <img src={`../../../public/${props.img}`} alt={props.name} id="avatar" />
+        <img src={`../../../public/${img}`} alt={name} id="avatar" />
       </Link>
-      <Heading heading="h2">
-        {props.name}
-      </Heading>
-      <Text className="subtitle">
-        {props.subtitle}
-      </Text>
-      <div className="sub-actions">
-        <LabelButton className="link-email" to="/login">
-          {props.email}
-        </LabelButton>
-      </div>
       <div className="actions">
         <Button
           type="button"
@@ -51,8 +36,34 @@ export const CardHome = (props) => {
           Linkedin
         </Button>
       </div>
-    </div>
-    <S.EmptyFooter>
+    </S.ContainerImg>
+    <S.ContainerText>
+    <S.TitleBox>
+      <Heading heading="h2">
+        {name}
+      </Heading>
+      <Text className="subtitle">
+        {subtitle}
+      </Text>
+      <div className="sub-actions">
+        <LabelButton className="link-email" to="/login">
+          {email}
+        </LabelButton>
+      </div>
+    </S.TitleBox>
+      <Heading classname="subtitleH2" heading="h2">
+        About
+      </Heading>
+      <Text className="subtitle">
+      I am a frontend developer with a particular interest in making things simple and automating daily tasks. I try to keep up with security and best practices, and am always looking for new things to learn.
+      </Text>
+      <Heading heading="h2">
+        Interests
+      </Heading>
+      <Text className="subtitle">
+      Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.
+      </Text>
+      <S.EmptyFooter>
       <S.SocialMidia>
         <LabelButton
           to="https://twitter.com/"
@@ -77,17 +88,19 @@ export const CardHome = (props) => {
         </LabelButton>
       </S.SocialMidia>
     </S.EmptyFooter>
-  </S.Container>
-)};
 
-CardHome.propTypes = {
+    </S.ContainerText>
+  </S.Container>
+);
+
+CardAbout.propTypes = {
   heading: PropTypes.oneOf(['h1', 'h2', 'h3']),
   isLink: PropTypes.bool,
   disabled: PropTypes.bool,
   to: PropTypes.any,
 };
 
-CardHome.defaultProps = {
+CardAbout.defaultProps = {
   heading: 'h1',
   variant: 'main',
   isLink: false,
