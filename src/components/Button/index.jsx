@@ -5,9 +5,15 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 
 export const Button = ({
-  variant, children, disabled, to, ...props
+  variant, children, disabled, to, href, ...props
 }) => {
-  const Component = to ? Link : 'button';
+  let Component = 'button';
+
+  if (to) {
+    Component = Link;
+  } else if (href) {
+    Component = 'a';
+  }
 
   const handleDisabledAnchor = useCallback((event) => {
     if (disabled) {
@@ -36,6 +42,7 @@ Button.propTypes = {
   isLink: PropTypes.bool,
   disabled: PropTypes.bool,
   to: PropTypes.any,
+  href: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -43,4 +50,5 @@ Button.defaultProps = {
   isLink: false,
   disabled: false,
   to: undefined,
+  href: undefined,
 };
