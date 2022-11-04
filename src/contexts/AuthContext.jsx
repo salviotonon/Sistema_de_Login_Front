@@ -21,9 +21,7 @@ export const AuthProvider = ({ children }) => {
           const { user: userData } = await api.validate({ token });
 
           setUser(userData);
-        } catch (err) {
-          alert(err.message);
-        }
+        } catch {}
       }
     };
 
@@ -36,8 +34,6 @@ export const AuthProvider = ({ children }) => {
 
       storage.store('auth:token', token);
       setUser(userData);
-
-      alert('Autenticado! Bem vindo', userData.name);
     } catch (err) {
       alert(err.message);
     }
@@ -53,8 +49,6 @@ export const AuthProvider = ({ children }) => {
 
       storage.store('auth:token', token);
       setUser(userData);
-
-      alert('Registrado! Bem vindo', userData.name);
     } catch (err) {
       alert(err.message);
     }
@@ -63,8 +57,6 @@ export const AuthProvider = ({ children }) => {
   const handleLogout = useCallback(() => {
     storage.remove('auth:token');
     setUser(null);
-
-    alert('Nunca é um adeus...');
   }, []);
 
   const authManager = useMemo(() => ({
