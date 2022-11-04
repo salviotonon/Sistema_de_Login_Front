@@ -3,16 +3,20 @@ import { useMemo, useCallback, useState } from 'react';
 export const useInputErrors = () => {
   const [errors, setErrors] = useState([]);
 
-  const hasError = useMemo(() => errors.length > 0, [errors]);
+  const hasError = useMemo(() => {
+    const requiredErrors = errors.filter((error) => error.isRequired);
 
-  const setError = useCallback(({ field, message }) => {
+    return requiredErrors.length > 0;
+  }, [errors]);
+
+  const setError = useCallback(({ field, message, isRequired = true }) => {
     if (errors.find((error) => error.field === field)) {
       setErrors((prevState) => prevState.filter((error) => error.field !== field));
     }
 
     setErrors((prevState) => [
       ...prevState,
-      { field, message },
+      { field, message, isRequired },
     ]);
   }, [errors, setErrors]);
 

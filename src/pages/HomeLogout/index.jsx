@@ -16,14 +16,12 @@ export const HomeLogout = () => (
 
     <div className="buttons">
       <Button
-        type="button"
         to="/login"
       >
         Fazer login
       </Button>
 
       <Button
-        type="button"
         variant="secondary"
         to="/signup"
       >
