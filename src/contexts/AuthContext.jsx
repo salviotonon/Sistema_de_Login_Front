@@ -13,19 +13,31 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const token = storage.get('auth:token');
+    const validateToken = async () => {
+      const token = storage.get('auth:token');
 
-    alert('O token:', token);
+      if (token) {
+        try {
+          const { user: userData } = await api.validate({ token });
+
+          setUser(userData);
+        } catch (err) {
+          alert(err.message);
+        }
+      }
+    };
+
+    validateToken();
   }, []);
 
   const handleLogin = useCallback(async ({ name, password }) => {
     try {
-      const { userData, token } = await api.login({ name, password });
+      const { user: userData, token } = await api.login({ name, password });
 
       storage.store('auth:token', token);
       setUser(userData);
 
-      alert('Autenticado! Bem vindo', user.name);
+      alert('Autenticado! Bem vindo', userData.name);
     } catch (err) {
       alert(err.message);
     }
@@ -35,14 +47,14 @@ export const AuthProvider = ({ children }) => {
     name, email, password, confirmPassword,
   }) => {
     try {
-      const { userData, token } = await api.signup({
+      const { user: userData, token } = await api.signup({
         name, email, password, confirmPassword,
       });
 
       storage.store('auth:token', token);
       setUser(userData);
 
-      alert('Registrado! Bem vindo', user.name);
+      alert('Registrado! Bem vindo', userData.name);
     } catch (err) {
       alert(err.message);
     }

@@ -3,6 +3,9 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import { useContext } from 'react';
+import { AuthContext } from './contexts/AuthContext';
+
 import { Layout } from './containers/Layout';
 
 import { Home } from './pages/Home';
@@ -15,7 +18,9 @@ import { About } from './pages/About';
 import { Profile } from './pages/Profile';
 
 const CustomRoute = ({ isPrivated, hasDefaultLayout, children }) => {
-  if (isPrivated) {
+  const { isAuthenticated } = useContext(AuthContext);
+
+  if (isPrivated && !isAuthenticated) {
     return <Navigate to="/app" />;
   }
 

@@ -1,10 +1,20 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+
+import { AuthContext } from '../../contexts/AuthContext';
+
 import { AuthForm } from '../../containers/AuthForm';
 
 export const Login = () => {
-  const handleSubmit = useCallback((user) => {
-    console.log('login submit:', user);
+  const { isAuthenticated, handleLogin } = useContext(AuthContext);
+
+  const handleSubmit = useCallback(async ({ name, password }) => {
+    await handleLogin({ name, password });
   }, []);
+
+  if (isAuthenticated) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <AuthForm
