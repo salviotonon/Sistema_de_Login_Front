@@ -4,6 +4,7 @@ import {
 } from 'react';
 import PropTypes from 'prop-types';
 
+import { toast } from 'react-toastify';
 import { storage } from '../utils/Storage';
 import { api } from '../api';
 
@@ -21,7 +22,9 @@ export const AuthProvider = ({ children }) => {
           const { user: userData } = await api.validate({ token });
 
           setUser(userData);
-        } catch {}
+        } catch {
+          toast.error('Sua sessão expirou');
+        }
       }
     };
 
@@ -35,7 +38,7 @@ export const AuthProvider = ({ children }) => {
       storage.store('auth:token', token);
       setUser(userData);
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   }, []);
 
@@ -50,7 +53,7 @@ export const AuthProvider = ({ children }) => {
       storage.store('auth:token', token);
       setUser(userData);
     } catch (err) {
-      alert(err.message);
+      toast.error(err.message);
     }
   }, []);
 
