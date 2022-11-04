@@ -19,6 +19,8 @@ export const Container = styled.div`
     }
     #avatar img {
         width: 100%;
+        height: 317px;
+        object-fit: cover;
     }
 
     .subtitle {
@@ -44,6 +46,7 @@ export const Container = styled.div`
     justify-content: space-evenly;
     align-items: center;
     margin-top: 2.4rem;
+    margin-bottom: 2rem;
 
       button {
         width: 100%;
