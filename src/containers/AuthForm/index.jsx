@@ -29,15 +29,6 @@ const dynamicContents = {
   },
 };
 
-const itemsAnimation = {
-  show: {
-    opacity: 1,
-  },
-  closed: {
-    opacity: 0,
-  },
-};
-
 export const AuthForm = ({ onSubmit, type }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -174,30 +165,21 @@ export const AuthForm = ({ onSubmit, type }) => {
       }}
     >
       <motion.div
-        animate="show"
-        exit="closed"
-        variants={{
-          show: {
-            transition: {
-              staggerChildren: 1,
-            },
+        initial={{ scale: 1.1, opacity: 0 }}
+        animate={{
+          scale: 1.0,
+          opacity: 1,
+          transition: {
+            delay: 0.2,
+            duration: 0.8,
           },
         }}
         className="content"
       >
-        <Heading
-          as={motion.h2}
-          variants={itemsAnimation}
-          heading="h2"
-        >
+        <Heading heading="h2">
           {dynamicContents.title[type]}
         </Heading>
-
-        <Text
-          as={motion.span}
-          variants={itemsAnimation}
-          className="subtitle"
-        >
+        <Text className="subtitle">
           {dynamicContents.subtitle[type]}
         </Text>
 
