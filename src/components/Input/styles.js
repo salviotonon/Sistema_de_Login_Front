@@ -29,6 +29,10 @@ export const InputBoxContainer = styled.div`
   align-items: center;
   gap: 0.4rem;
   cursor: text;
+
+  transition-property: border-color, background-color, color;
+  transition: ${({ theme }) => theme.animations.shortDuration} ease-in-out;
+
   ${({ theme, hasError }) => hasError && css`
     border-color: ${theme.colors.red[400]} !important;
   `}

@@ -17,7 +17,7 @@ export const ButtonStyled = styled.button`
 
   ${SignOutStyles.Container} {
     svg {
-      transition: transform 0.2s ease-in-out;
+      transition: transform ${({ theme }) => theme.animations.duration} ease-in-out;
     }
   }
 

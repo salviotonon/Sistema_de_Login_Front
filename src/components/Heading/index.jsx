@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-export function Heading({ heading, children }) {
+export const Heading = ({ heading, children }) => {
   const Component = heading;
 
   return (
@@ -8,7 +8,7 @@ export function Heading({ heading, children }) {
       {children}
     </Component>
   );
-}
+};
 
 Heading.propTypes = {
   heading: PropTypes.oneOf(['h1', 'h2', 'h3']),

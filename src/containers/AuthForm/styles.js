@@ -26,6 +26,10 @@ export const Container = styled.div`
 
       display: flex;
       justify-content: center;
+
+      a + a {
+        margin-left: 3.2rem;
+      }
     }
 
     .actions {

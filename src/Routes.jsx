@@ -8,6 +8,7 @@ import { Layout } from './containers/Layout';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
 import { Signup } from './pages/Signup';
+import { ForgotPassword } from './pages/ForgotPassword';
 import { HomeLogout } from './pages/HomeLogout';
 import { Authors } from './pages/Authors';
 import { About } from './pages/About';
@@ -45,7 +46,7 @@ export const MainRoutes = () => (
     <Route
       path="/"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute>
           <Home />
         </CustomRoute>
       )}
@@ -65,6 +66,15 @@ export const MainRoutes = () => (
       element={(
         <CustomRoute>
           <Signup />
+        </CustomRoute>
+      )}
+    />
+
+    <Route
+      path="/forgotpassword"
+      element={(
+        <CustomRoute>
+          <ForgotPassword />
         </CustomRoute>
       )}
     />

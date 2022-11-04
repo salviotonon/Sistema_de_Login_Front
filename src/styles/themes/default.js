@@ -41,4 +41,9 @@ export default {
     small: '1.2rem',
   },
 
+  animations: {
+    shortDuration: '0.12s',
+    duration: '0.2s',
+  },
+
 };

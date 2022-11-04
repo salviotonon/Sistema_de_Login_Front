@@ -46,12 +46,13 @@ export const ButtonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 
   button, a {
     display: flex;
     justify-content: center;
+    align-items: center;
     height: 40px;
-    
 
     color: inherit;
     font-size: inherit;
@@ -60,14 +61,18 @@ export const ButtonContainer = styled.div`
     padding: 1.2rem 1.6rem;
     border-radius: 6px;
 
-    font-size: 1.4rem;
+    font-size: ${({ theme }) => theme.size.medium};
     font-weight: 700;
+
+    transition-property: color, background-color;
+    transition: ${({ theme }) => theme.animations.shortDuration} ease-in-out;
 
     ${({ variant }) => variants[variant || 'main']};
 
     &[disabled] {
       color: ${({ theme }) => theme.colors.slate[600]};
       background-color: ${({ theme }) => theme.colors.slate[800]};
+      border-color: ${({ theme }) => theme.colors.gray[700]};
       cursor: default;
     }
   }
@@ -77,7 +82,7 @@ export const ButtonContainer = styled.div`
   }
 
   button {
-    border: none;
+    border: 1px solid transparent;
     outline: 0;
   }
 `;

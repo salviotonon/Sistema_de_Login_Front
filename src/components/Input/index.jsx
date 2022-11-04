@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import {
-  useCallback, useEffect, useRef, useState,
+  useCallback, useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
 
 import * as S from './styles';
@@ -9,7 +9,9 @@ export const Input = ({
   labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
 }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
+  const inputBoxRef = useRef(null);
   const inputRef = useRef(null);
+  const isInputBoxHovered = useRef(false);
 
   const IconComponent = icon;
   const RightIconComponent = rightIcon;
@@ -18,9 +20,32 @@ export const Input = ({
     setIsInputFocused(true);
   }, [isInputFocused]);
 
-  const handleBlurInput = useCallback(() => {
+  const handleBlurInput = useCallback((event) => {
+    if (isInputBoxHovered.current && !event.relatedTarget) {
+      inputRef.current.focus();
+      return;
+    }
+
     setIsInputFocused(false);
   }, [isInputFocused]);
+
+  useLayoutEffect(() => {
+    function handleHoverInputBox() {
+      isInputBoxHovered.current = true;
+    }
+
+    function handleStopHoverInputBox() {
+      isInputBoxHovered.current = false;
+    }
+
+    inputBoxRef.current.addEventListener('mouseenter', handleHoverInputBox);
+    inputBoxRef.current.addEventListener('mouseleave', handleStopHoverInputBox);
+
+    return () => {
+      inputBoxRef.current.removeEventListener('mouseenter', handleHoverInputBox);
+      inputBoxRef.current.removeEventListener('mouseleave', handleStopHoverInputBox);
+    };
+  }, []);
 
   useEffect(() => {
     if (isInputFocused) {
@@ -39,13 +64,15 @@ export const Input = ({
       )}
 
       <S.InputBoxContainer
-        role="button"
+        role="textbox"
+        tabIndex={0}
+        ref={inputBoxRef}
         hasError={!!errorFeedback}
         isFocused={isInputFocused}
+        onFocus={handleFocusInput}
         onClick={handleFocusInput}
         onBlur={handleBlurInput}
-        onMouseDown={(event) => {
-          event.preventDefault();
+        onMouseDown={() => {
           handleFocusInput();
         }}
       >
