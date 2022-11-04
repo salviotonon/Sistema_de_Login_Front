@@ -5,12 +5,15 @@ import GlobalStyle from './styles/global';
 import theme from './styles/themes/default';
 
 import { MainRoutes } from './Routes';
+import { AuthProvider } from './contexts/AuthContext';
 
 export const App = () => (
   <BrowserRouter>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <MainRoutes />
+      <AuthProvider>
+        <MainRoutes />
+      </AuthProvider>
     </ThemeProvider>
   </BrowserRouter>
 );
