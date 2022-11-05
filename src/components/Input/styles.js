@@ -15,6 +15,11 @@ export const InputLabel = styled.label`
       content: " !";
     }
   `};
+
+  ${({ theme, disabled }) => disabled && css`
+    color: ${theme.colors.gray[300]};
+    opacity: 0.8;
+  `}
 `;
 
 export const InputBoxContainer = styled.div`
@@ -36,22 +41,42 @@ export const InputBoxContainer = styled.div`
   ${({ theme, hasError }) => hasError && css`
     border-color: ${theme.colors.red[400]} !important;
   `}
+
   ${({ theme, isFocused }) => isFocused && css`
     background-color: ${theme.colors.white};
     color: ${theme.colors.gray[700]};
   `}
+
+  ${({ theme, disabled }) => disabled && css`
+    pointer-events: none;
+
+    background-color: ${theme.colors.slate[900]};
+    color: ${theme.colors.slate[600]};
+    cursor: default;
+
+    &::placeholder {
+      color: ${theme.colors.slate[700]};
+    }
+  `}
+
   &:hover {
     border-color: ${({ theme }) => theme.colors.blue[200]};
   }
-  `;
+`;
 
 export const InputIcon = styled.span`
   svg {
     width: 2.4rem;
     height: 2.4rem;
   }
+
   &#right-icon {
     color: ${({ theme }) => theme.colors.gray[300]};
+
+    ${({ theme, disabled }) => disabled && css`
+      color: ${theme.colors.slate[600]};
+    `}
+
     ${({ hasAction }) => hasAction && css`
       &:hover {
         cursor: pointer;
@@ -68,12 +93,14 @@ export const InputStyled = styled.input`
   font-weight: 500;
   font-size: ${({ theme }) => theme.size.medium};
   flex: 1;
+
   &::placeholder {
     color: ${({ theme }) => theme.colors.gray[300]};
     font-size: ${({ theme }) => theme.size.small};
     font-weight: 500;
     font-family: ${({ theme }) => theme.font};
   }
+
   &:focus ~ ${InputBoxContainer} {
     color: ${({ theme }) => theme.colors.gray[700]};
     background-color: ${({ theme }) => theme.colors.white};

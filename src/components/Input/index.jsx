@@ -6,7 +6,7 @@ import {
 import * as S from './styles';
 
 export const Input = ({
-  labelName, icon, rightIcon, onRightIconClick, errorFeedback, ...props
+  labelName, icon, rightIcon, onRightIconClick, errorFeedback, disabled, ...props
 }) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const inputBoxRef = useRef(null);
@@ -58,7 +58,7 @@ export const Input = ({
   return (
     <S.InputGroup>
       {labelName && (
-        <S.InputLabel hasError={!!errorFeedback}>
+        <S.InputLabel hasError={!!errorFeedback} disabled={disabled}>
           {labelName}
         </S.InputLabel>
       )}
@@ -75,15 +75,16 @@ export const Input = ({
         onMouseDown={() => {
           handleFocusInput();
         }}
+        disabled={disabled}
       >
         {icon && (
           <S.InputIcon>
             <IconComponent />
           </S.InputIcon>
         )}
-        <S.InputStyled ref={inputRef} {...props} />
+        <S.InputStyled ref={inputRef} disabled={disabled} {...props} />
         {rightIcon && (
-          <S.InputIcon id="right-icon" hasAction={!!onRightIconClick}>
+          <S.InputIcon id="right-icon" hasAction={!!onRightIconClick} disabled={disabled}>
             <RightIconComponent onClick={onRightIconClick} />
           </S.InputIcon>
         )}
@@ -103,6 +104,7 @@ Input.propTypes = {
   rightIcon: PropTypes.object,
   onRightIconClick: PropTypes.func,
   errorFeedback: PropTypes.string,
+  disabled: PropTypes.bool,
 };
 
 Input.defaultProps = {
@@ -111,4 +113,5 @@ Input.defaultProps = {
   rightIcon: undefined,
   onRightIconClick: undefined,
   errorFeedback: undefined,
+  disabled: false,
 };

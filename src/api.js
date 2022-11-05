@@ -1,6 +1,8 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable no-unused-vars */
 /* eslint-disable class-methods-use-this */
 import axios from 'axios';
+import { delay } from './utils/delay';
 import { APIError } from './errors/APIErrors';
 
 const fakeUser = {
@@ -14,6 +16,8 @@ class API {
     this.api = axios.create({
       baseURL: 'http://localhost:3333',
     });
+
+    this._delayDebug = 2000;
   }
 
   setDefaultHeader(headerKey, value) {
@@ -24,52 +28,52 @@ class API {
     this.api.defaults.headers.common[headerKey] = null;
   }
 
-  login({ name, password }) {
-    return new Promise((resolve, reject) => {
-      if (name !== fakeUser.name) {
-        reject(new APIError(404, 'Usuário não encontrado.'));
-      }
+  async login({ name, password }) {
+    await delay(this._delayDebug);
 
-      if (password === 'wrongtest') {
-        reject(new APIError(401, 'Senha incorreta.'));
-      }
+    if (name !== fakeUser.name) {
+      throw new APIError(404, 'Usuário não encontrado.');
+    }
 
-      resolve({
-        user: fakeUser,
-        token: 'tokenexample',
-      });
-    });
+    if (password === 'wrongtest') {
+      throw new APIError(401, 'Senha incorreta.');
+    }
+
+    return {
+      user: fakeUser,
+      token: 'tokenexample',
+    };
   }
 
-  signup({
+  async signup({
     name, email, password, confirmPassword,
   }) {
-    return new Promise((resolve, reject) => {
-      if (name === fakeUser.name) {
-        reject(new APIError(400, 'Nome já em uso.'));
-      }
+    await delay(this._delayDebug);
 
-      if (email === fakeUser.email) {
-        reject(new APIError(400, 'E-mail já cadastrado.'));
-      }
+    if (name === fakeUser.name) {
+      throw new APIError(400, 'Nome já em uso.');
+    }
 
-      resolve({
-        user: fakeUser,
-        token: 'tokenexample',
-      });
-    });
+    if (email === fakeUser.email) {
+      throw new APIError(400, 'E-mail já cadastrado.');
+    }
+
+    return {
+      user: fakeUser,
+      token: 'tokenexample',
+    };
   }
 
-  validate({ token }) {
-    return new Promise((resolve) => {
-      resolve({ user: fakeUser });
-    });
+  async validate({ token }) {
+    await delay(this._delayDebug);
+
+    return { user: fakeUser };
   }
 
-  restorePassword({ email }) {
-    return new Promise((resolve) => {
-      resolve({ message: 'Enviamos instruções para seu e-mail, verifique sua caixa de entrada ou de spam.' });
-    });
+  async restorePassword({ email }) {
+    await delay(this._delayDebug);
+
+    return { message: 'Enviamos instruções para seu e-mail, verifique sua caixa de entrada ou de spam.' };
   }
 }
 

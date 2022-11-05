@@ -17,6 +17,8 @@ import * as S from './styles';
 import { api } from '../../api';
 
 export const ForgotPassword = () => {
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
   const [email, setEmail] = useState('');
   const {
     errors, setError, removeError, getMessageErrorByField,
@@ -40,11 +42,15 @@ export const ForgotPassword = () => {
 
   const handleForgotPassword = useCallback(async () => {
     try {
+      setIsSubmiting(true);
+
       const { message } = await api.restorePassword({ email });
 
       toast.info(message);
     } catch (err) {
       toast.error(err.message);
+    } finally {
+      setIsSubmiting(false);
     }
   }, [email]);
 
@@ -87,6 +93,7 @@ export const ForgotPassword = () => {
           type="button"
           onClick={handleForgotPassword}
           disabled={!isInputValid}
+          isLoading={isSubmiting}
         >
           Recuperar senha
         </Button>

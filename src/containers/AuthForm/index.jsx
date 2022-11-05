@@ -32,6 +32,8 @@ const dynamicContents = {
 };
 
 export const AuthForm = ({ onSubmit, type }) => {
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -138,7 +140,7 @@ export const AuthForm = ({ onSubmit, type }) => {
     });
   }, [password, setPassword]);
 
-  const handlePreSubmit = useCallback((event) => {
+  const handlePreSubmit = useCallback(async (event) => {
     event.preventDefault();
 
     const user = {
@@ -148,7 +150,13 @@ export const AuthForm = ({ onSubmit, type }) => {
       confirmPassword: confirmPassword || null,
     };
 
-    onSubmit(user);
+    try {
+      setIsSubmiting(true);
+
+      await onSubmit(user);
+    } finally {
+      setIsSubmiting(false);
+    }
   }, [name, email, password, confirmPassword]);
 
   return (
@@ -178,6 +186,7 @@ export const AuthForm = ({ onSubmit, type }) => {
             labelName="Nome do usuário"
             icon={User}
             errorFeedback={getMessageErrorByField('name')}
+            disabled={isSubmiting}
           />
 
           {type === 'signup' && (
@@ -189,6 +198,7 @@ export const AuthForm = ({ onSubmit, type }) => {
               labelName="E-mail"
               icon={Envelope}
               errorFeedback={getMessageErrorByField('email')}
+              disabled={isSubmiting}
             />
           )}
 
@@ -197,6 +207,7 @@ export const AuthForm = ({ onSubmit, type }) => {
             onChange={handlePasswordChange}
             labelName="Senha"
             errorFeedback={getMessageErrorByField('password')}
+            disabled={isSubmiting}
           />
 
           {type === 'signup' && (
@@ -205,6 +216,7 @@ export const AuthForm = ({ onSubmit, type }) => {
               onChange={handleConfirmPasswordChange}
               labelName="Confirmar senha"
               errorFeedback={getMessageErrorByField('confirmPassword')}
+              disabled={isSubmiting}
             />
           )}
 
@@ -218,11 +230,11 @@ export const AuthForm = ({ onSubmit, type }) => {
 
             {type === 'login' && (
               <>
-                <LabelButton to="/signup">
+                <LabelButton to="/signup" disabled={isSubmiting}>
                   Não possui conta?
                 </LabelButton>
 
-                <LabelButton to="/forgotpassword">
+                <LabelButton to="/forgotpassword" disabled={isSubmiting}>
                   Esqueceu sua senha?
                 </LabelButton>
               </>
@@ -233,6 +245,7 @@ export const AuthForm = ({ onSubmit, type }) => {
           <div className="actions">
             <Button
               type="submit"
+              isLoading={isSubmiting}
               disabled={!isFormValid}
             >
               {dynamicContents.submitButton[type]}
