@@ -49,7 +49,6 @@ export const Button = ({
 Button.propTypes = {
   variant: PropTypes.oneOf(['main', 'secondary', 'danger']),
   children: PropTypes.node.isRequired,
-  isLink: PropTypes.bool,
   disabled: PropTypes.bool,
   isLoading: PropTypes.bool,
   to: PropTypes.any,
@@ -58,7 +57,6 @@ Button.propTypes = {
 
 Button.defaultProps = {
   variant: 'main',
-  isLink: false,
   disabled: false,
   isLoading: false,
   to: undefined,
