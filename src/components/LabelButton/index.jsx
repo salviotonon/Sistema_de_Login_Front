@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 
 export const LabelButton = ({
-  defaultAnchor, to, children, size, ...props
+  defaultAnchor, to, children, ...props
 }) => {
   const Component = defaultAnchor ? S.AnchorStyled : S.LinkStyled;
 
@@ -22,10 +22,8 @@ LabelButton.propTypes = {
   defaultAnchor: PropTypes.bool,
   to: PropTypes.any.isRequired,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-  size: PropTypes.oneOf(['large', 'medium', 'small']),
 };
 
 LabelButton.defaultProps = {
   defaultAnchor: false,
-  size: 'medium',
 };
