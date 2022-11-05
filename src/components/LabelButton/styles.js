@@ -6,6 +6,13 @@ const style = css`
   color: ${({ theme }) => theme.colors.orange[200]};
   text-decoration: none;
 
+  ${({ disabled }) => disabled && css`
+    pointer-events: none;
+
+
+    opacity: 0.5;
+  `}
+
   &:hover::after {
     width: 100%;
   }
