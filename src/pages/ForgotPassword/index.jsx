@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Envelope } from 'phosphor-react';
 
+import { toast } from 'react-toastify';
 import * as Animation from '../../configs/animations';
 
 import { Button } from '../../components/Button';
@@ -13,6 +14,7 @@ import { useInputErrors } from '../../hooks/useInputErrors';
 import { isEmailValid } from '../../utils/isEmailValid';
 
 import * as S from './styles';
+import { api } from '../../api';
 
 export const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -35,6 +37,16 @@ export const ForgotPassword = () => {
 
     setEmail(value);
   }, []);
+
+  const handleForgotPassword = useCallback(async () => {
+    try {
+      const { message } = await api.restorePassword({ email });
+
+      toast.info(message);
+    } catch (err) {
+      toast.error(err.message);
+    }
+  }, [email]);
 
   return (
     <S.Container
@@ -73,6 +85,7 @@ export const ForgotPassword = () => {
 
         <Button
           type="button"
+          onClick={handleForgotPassword}
           disabled={!isInputValid}
         >
           Recuperar senha

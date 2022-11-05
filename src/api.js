@@ -65,6 +65,12 @@ class API {
       resolve({ user: fakeUser });
     });
   }
+
+  restorePassword({ email }) {
+    return new Promise((resolve) => {
+      resolve({ message: 'Enviamos instruções para seu e-mail, verifique sua caixa de entrada ou de spam.' });
+    });
+  }
 }
 
 const api = new API();
