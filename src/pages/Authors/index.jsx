@@ -1,3 +1,21 @@
-export const Authors = () => (
-  <h1>Authors</h1>
-);
+import { CardAbout } from "../../components/CardAuthors";
+import { dynamicData } from "../../components/CardAuthors/dynamicData";
+
+export const Authors = () => {
+  const infoAbout = dynamicData.map(item => {
+    console.log(item.avatar)
+    return(
+      <CardAbout
+      name={item.name}
+      img={item.avatar}
+      subtitle={item.subtitle}
+      email={item.email}
+    />
+    );
+  }); 
+  return(
+    <div>
+      {infoAbout}
+    </div>
+ 
+);};
