@@ -20,9 +20,8 @@ export const ContainerImg = styled.div`
         display: flex;
 
         padding-top: 5.5rem;
-=======
+    }
 
-   
 `;
 export const TitleBox = styled.div`
     display: flex;
