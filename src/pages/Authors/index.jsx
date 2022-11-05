@@ -1,5 +1,5 @@
-import { CardAbout } from "../../components/CardAbout";
-import { dynamicData } from "../../components/CardAbout/dynamicData";
+import { CardAbout } from "../../components/CardAuthors";
+import { dynamicData } from "../../components/CardAuthors/dynamicData";
 
 export const Authors = () => {
   const infoAbout = dynamicData.map(item => {

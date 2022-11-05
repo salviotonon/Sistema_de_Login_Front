@@ -2,7 +2,7 @@ import PropTypes, { object } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import {
-  LinkedinLogo, GithubLogo, TwitterLogo, FacebookLogo, InstagramLogo,
+  LinkedinLogo, GithubLogo, TwitterLogo, FacebookLogo, InstagramLogo, LinkSimple
 } from 'phosphor-react';
 
 import { Text } from '../Text';
@@ -29,7 +29,10 @@ export const CardHome = (props) => {
       </Text>
       <div className="sub-actions">
         <LabelButton className="link-email" to="/login">
-          {props.email}
+          {props.email} <LinkSimple
+                        color='white'
+                        size={18}
+                         />
         </LabelButton>
       </div>
       <div className="actions">
@@ -54,21 +57,21 @@ export const CardHome = (props) => {
     </div>
     <S.EmptyFooter>
       <S.SocialMidia>
-        <LabelButton
+        <LabelButton className='colorIcon'
           to="https://twitter.com/"
         >
           <TwitterLogo
             size={23}
           />
         </LabelButton>
-        <LabelButton
+        <LabelButton className='colorIcon'
           to="https://www.facebook.com/"
         >
           <FacebookLogo
             size={23}
           />
         </LabelButton>
-        <LabelButton
+        <LabelButton className='colorIcon'
           to="https://www.instagram.com/"
         >
           <InstagramLogo
