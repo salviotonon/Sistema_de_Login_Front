@@ -18,7 +18,7 @@ export const CardHome = (props) => {
     return(
   <S.Container>
     <div className="content">
-      <Link to="/about" id="avatar">
+      <Link to="/authors" id="avatar">
         <img src={`../../../public/${props.img}`} alt={props.name} id="avatar" />
       </Link>
       <Heading heading="h2">

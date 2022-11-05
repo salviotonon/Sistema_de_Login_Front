@@ -1,21 +1,23 @@
 import { CardAbout } from "../../components/CardAbout";
 import { dynamicData } from "../../components/CardAbout/dynamicData";
+import { Heading } from "../../components/Heading";
+import { Text } from "../../components/Text";
+
+import * as S from './styles'
 
 export const About = () => {
-  const infoAbout = dynamicData.map(item => {
-    console.log(item.avatar)
-    return(
-      <CardAbout
-      name={item.name}
-      img={item.avatar}
-      subtitle={item.subtitle}
-      email={item.email}
-    />
-    );
-  }); 
-  return(
-    <div>
-      {infoAbout}
-    </div>
- 
-);};
+  return (
+    <>
+      <S.Container>
+        <Heading className='titleh1' heading='h2'>Por baixo dos panos...</Heading>
+        <Text className='subtitle'>Veja abaixo quais tecnologias estão deixando
+          nossa aplicação em pé, tanto do lado do servidor quanto do Frontend!
+          Utilizamos as tecnologias mais modernas no mercado!</Text>
+      </S.Container>
+      <S.ContainerCarrousel>
+      <Heading>Carrosel</Heading>
+      </S.ContainerCarrousel>
+    </>
+
+  );
+};
