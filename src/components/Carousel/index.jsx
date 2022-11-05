@@ -9,7 +9,7 @@ export default class extends React.Component {
         return (
             <S.Container>
                 <Carousel
-                    slidesToShow={2}
+                    slidesToShow={3}
                     cellAlign='center'
                     defaultControlsConfig={{
                         nextButtonText: '>',
@@ -31,6 +31,10 @@ export default class extends React.Component {
                 <S.ContainerImg>
                 <Heading heading="h3">Figma</Heading>
                     <img className='reactIcon' src="../../public/figma.jpg" alt="" />
+                </S.ContainerImg>
+                <S.ContainerImg>
+                <Heading heading="h3">JWT</Heading>
+                    <img className='reactIcon' src="../../public/jwt.png" alt="" />
                 </S.ContainerImg>
                 </Carousel>
             </S.Container>
