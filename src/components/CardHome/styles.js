@@ -59,6 +59,10 @@ export const Container = styled.div`
 export const EmptyFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.slate[900]};
   height: 6.4rem;
+
+  .colorIcon {
+    color: ${({theme}) => theme.colors.gray[300]};
+  }
 `;
 
 export const SocialMidia = styled.div`

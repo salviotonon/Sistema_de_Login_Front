@@ -54,21 +54,21 @@ export const CardHome = (props) => {
     </div>
     <S.EmptyFooter>
       <S.SocialMidia>
-        <LabelButton
+        <LabelButton className='colorIcon'
           to="https://twitter.com/"
         >
           <TwitterLogo
             size={23}
           />
         </LabelButton>
-        <LabelButton
+        <LabelButton className='colorIcon'
           to="https://www.facebook.com/"
         >
           <FacebookLogo
             size={23}
           />
         </LabelButton>
-        <LabelButton
+        <LabelButton className='colorIcon'
           to="https://www.instagram.com/"
         >
           <InstagramLogo

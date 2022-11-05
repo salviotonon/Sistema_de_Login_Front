@@ -1,5 +1,5 @@
-import { CardAbout } from "../../components/CardAbout";
-import { dynamicData } from "../../components/CardAbout/dynamicData";
+import { CardAuthors } from "../../components/CardAuthors";
+import { dynamicData } from "../../components/CardAuthors/dynamicData";
 import { Heading } from "../../components/Heading";
 import { Text } from "../../components/Text";
 
