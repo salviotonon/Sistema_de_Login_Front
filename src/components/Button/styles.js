@@ -43,6 +43,8 @@ const variants = {
 };
 
 export const ButtonContainer = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,4 +87,9 @@ export const ButtonContainer = styled.div`
     border: 1px solid transparent;
     outline: 0;
   }
+`;
+
+export const ButtonLoader = styled.span`
+  position: absolute;
+  right: 2rem;
 `;
