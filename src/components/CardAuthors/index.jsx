@@ -98,7 +98,7 @@ export const CardAuthors = ({ name, email, img, subtitle }) => (
 
 
 
-CardAbout.propTypes = {
+CardAuthors.propTypes = {
 
   heading: PropTypes.oneOf(['h1', 'h2', 'h3']),
   isLink: PropTypes.bool,
@@ -107,7 +107,7 @@ CardAbout.propTypes = {
 };
 
 
-CardAbout.defaultProps = {
+CardAuthors.defaultProps = {
   heading: 'h1',
   variant: 'main',
   isLink: false,
