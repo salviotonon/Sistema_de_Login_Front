@@ -38,6 +38,7 @@ export const CardAuthors = ({ name, email, img, subtitle }) => (
       </div>
     </S.ContainerImg>
     <S.ContainerText>
+
       <S.TitleBox>
         <Heading heading="h2">
           {name}
@@ -95,14 +96,18 @@ export const CardAuthors = ({ name, email, img, subtitle }) => (
   </S.Container>
 );
 
-CardAuthors.propTypes = {
+
+
+CardAbout.propTypes = {
+
   heading: PropTypes.oneOf(['h1', 'h2', 'h3']),
   isLink: PropTypes.bool,
   disabled: PropTypes.bool,
   to: PropTypes.any,
 };
 
-CardAuthors.defaultProps = {
+
+CardAbout.defaultProps = {
   heading: 'h1',
   variant: 'main',
   isLink: false,

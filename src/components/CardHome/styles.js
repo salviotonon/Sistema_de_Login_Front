@@ -12,6 +12,10 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
 
+    h2 {
+      padding-top: 2rem;
+    }
+
     #avatar {
         max-width: 317px;
         max-height:317px;
@@ -28,8 +32,10 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.colors.orange[200]};
     }
     .link-email {
+      flex-direction: row;
         color: ${({ theme }) => theme.colors.gray[300]};
     }
+
     .linkedin-logo {
         width: 50px;
     }
@@ -47,6 +53,8 @@ export const Container = styled.div`
     align-items: center;
     margin-top: 2.4rem;
     margin-bottom: 2rem;
+    padding: 0.8rem 2rem;
+    gap: 2rem;
 
       button {
         width: 100%;
@@ -71,4 +79,8 @@ export const SocialMidia = styled.div`
     align-items: center;
     height: 100%;
     gap: 0.8rem;
+
+    .colorIcon {
+      color: ${({theme}) => theme.colors.gray[300]};
+    }
 `;

@@ -18,9 +18,10 @@ export const ContainerImg = styled.div`
     }
     .actions {
         display: flex;
+
         padding-top: 5.5rem;
-        justify-content: space-between;
-    }
+=======
+
    
 `;
 export const TitleBox = styled.div`
@@ -28,6 +29,7 @@ export const TitleBox = styled.div`
     flex-direction: column;
     align-items: center;
     margin-bottom: 4.3rem;
+
 
  
 `;
@@ -63,6 +65,7 @@ export const SocialMidia = styled.div`
 
         color: ${({theme}) => theme.colors.gray[300]}
     }
+
 `;
 export const EmptyFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.slate[900]};

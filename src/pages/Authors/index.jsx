@@ -1,4 +1,6 @@
+
 import { CardAuthors } from '../../components/CardAuthors'
+
 import { dynamicData } from "../../components/CardAuthors/dynamicData";
 
 export const Authors = () => {
