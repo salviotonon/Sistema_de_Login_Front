@@ -1,5 +1,5 @@
 import {
-  Routes, Route, Navigate,
+  Routes, Route, Navigate, useNavigate,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -19,17 +19,17 @@ import { Profile } from './pages/Profile';
 
 const RouteController = ({ type, children }) => {
   const [canRender, setCanRender] = useState(false);
-
   const { isLoading, isAuthenticated } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!isLoading) {
       if (type === 'privated' && !isAuthenticated) {
-        <Navigate to="/app" />;
+        navigate('/app');
       }
 
       if (type === 'logged-out' && isAuthenticated) {
-        <Navigate to="/" />;
+        navigate('/');
       }
 
       setCanRender(true);
@@ -42,6 +42,8 @@ const RouteController = ({ type, children }) => {
   if (canRender) {
     return children;
   }
+
+  return null;
 };
 
 RouteController.propTypes = {
