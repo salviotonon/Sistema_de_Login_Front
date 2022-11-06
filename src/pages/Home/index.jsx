@@ -6,6 +6,7 @@ import * as S from './styles';
 export const Home = () => {
   const cards = dinamicData.map((item) => (
     <CardHome
+      key={Math.random()}
       name={item.name}
       img={item.avatar}
       subtitle={item.subtitle}
