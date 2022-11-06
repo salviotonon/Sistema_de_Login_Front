@@ -61,8 +61,6 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 ## ✒️ Autores
 
-Mencione todos aqueles que ajudaram a levantar o projeto desde o seu início
-
 * **Desenvolvedor Frontend Salvio Tonon** (https://github.com/salviotonon)
 * **Desenvolvedor Fullstack Felipe Oliveira** (https://github.com/Felipstein)
 * **Desenvolvedor Fullstack Alex** (https://github.com/alexrla)
