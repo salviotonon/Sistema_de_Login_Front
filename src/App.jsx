@@ -7,6 +7,8 @@ import GlobalStyle from './styles/global';
 import theme from './styles/themes/default';
 
 import { ToastContainerModified } from './containers/ToastContainerModified';
+import { LoadingScreen } from './containers/LoadingScreen';
+
 import { AuthProvider } from './contexts/AuthContext';
 import { MainRoutes } from './Routes';
 import { Layout } from './containers/Layout';
@@ -17,6 +19,7 @@ export const App = () => (
       <GlobalStyle />
       <AuthProvider>
         <ToastContainerModified />
+        <LoadingScreen />
         <Layout>
           <MainRoutes />
         </Layout>
