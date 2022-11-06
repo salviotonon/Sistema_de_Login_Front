@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const BorderBottom = styled.div`
   display: inline-block;
@@ -11,7 +11,7 @@ export const BorderBottom = styled.div`
   transition: width 0.2s ease-in-out;
 `;
 
-export const LinkStyled = styled(Link)`
+export const NavLinkStyled = styled(NavLink)`
   display: flex;
   flex-direction: column;
   width: fit-content;
@@ -20,19 +20,22 @@ export const LinkStyled = styled(Link)`
   text-decoration: none;
   color: ${({ theme }) => theme.colors.gray[300]};
 
-  ${({ theme, selected }) => selected && css`
-    color: ${theme.colors.white};
+  &.active {
+    color: ${({ theme }) => theme.colors.white};
+    cursor: default;
 
     svg {
-      color: ${theme.colors.blue[400]};
+      color: ${({ theme }) => theme.colors.blue[400]};
     }
-  `};
+  }
 
-  &:hover {
-    color: ${({ theme }) => theme.colors.white};
+  &:not(.active) {
+    &:hover {
+      color: ${({ theme }) => theme.colors.white};
 
-    ${BorderBottom} {
-      width: 100%;
+      ${BorderBottom} {
+        width: 100%;
+      }
     }
   }
 

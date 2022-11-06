@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import * as S from './styles';
 
 export const NavSelecter = ({
-  to, selected, icon, children,
+  to, icon, children,
 }) => {
   const IconComponent = icon;
 
   return (
-    <S.LinkStyled to={to} selected={selected}>
+    <S.NavLinkStyled to={to} end className={({ isActive }) => isActive && 'active'}>
       <div className="content">
         {icon && (
           <IconComponent
@@ -21,21 +21,17 @@ export const NavSelecter = ({
         </span>
       </div>
 
-      {!selected && (
-        <S.BorderBottom />
-      )}
-    </S.LinkStyled>
+      <S.BorderBottom />
+    </S.NavLinkStyled>
   );
 };
 
 NavSelecter.propTypes = {
   to: PropTypes.any.isRequired,
-  selected: PropTypes.bool,
   icon: PropTypes.object,
   children: PropTypes.node.isRequired,
 };
 
 NavSelecter.defaultProps = {
   icon: undefined,
-  selected: false,
 };
