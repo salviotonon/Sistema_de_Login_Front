@@ -11,10 +11,13 @@ import { api } from '../api';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     const validateToken = async () => {
+      setIsLoading(true);
+
       const token = storage.get('auth:token');
 
       if (token) {
@@ -26,6 +29,8 @@ export const AuthProvider = ({ children }) => {
           toast.error('Sua sessão expirou');
         }
       }
+
+      setIsLoading(false);
     };
 
     validateToken();
@@ -63,6 +68,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const authManager = useMemo(() => ({
+    isLoading,
     isAuthenticated: !!user,
     user,
     handleLogin,
