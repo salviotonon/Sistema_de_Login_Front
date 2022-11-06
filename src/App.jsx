@@ -9,6 +9,7 @@ import theme from './styles/themes/default';
 import { ToastContainerModified } from './containers/ToastContainerModified';
 import { AuthProvider } from './contexts/AuthContext';
 import { MainRoutes } from './Routes';
+import { Layout } from './containers/Layout';
 
 export const App = () => (
   <BrowserRouter>
@@ -16,7 +17,9 @@ export const App = () => (
       <GlobalStyle />
       <AuthProvider>
         <ToastContainerModified />
-        <MainRoutes />
+        <Layout>
+          <MainRoutes />
+        </Layout>
       </AuthProvider>
     </ThemeProvider>
   </BrowserRouter>
