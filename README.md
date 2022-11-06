@@ -45,8 +45,6 @@ PORT=
 
 ## 🛠️ Construído com
 
-Mencione as ferramentas que você usou para criar seu projeto
-
 * [React](https://reactjs.org/) - O framework de JavaScript web usado
 * [Styled-Component](https://styled-components.com/) - Poderosa junção de CSS e JavaScript utilizado para a estilização dos componentes
 * [Express](https://expressjs.com/) - O framework de aplicativo da web NodeJS
