@@ -58,7 +58,9 @@ export const CardHome = (props) => (
       <S.SocialMidia>
         <LabelButton
           className="colorIcon"
+          defaultAnchor
           to="https://twitter.com/"
+          target="_blank"
         >
           <TwitterLogo
             size={23}
@@ -66,7 +68,9 @@ export const CardHome = (props) => (
         </LabelButton>
         <LabelButton
           className="colorIcon"
+          defaultAnchor
           to="https://www.facebook.com/"
+          target="_blank"
         >
           <FacebookLogo
             size={23}
@@ -74,7 +78,9 @@ export const CardHome = (props) => (
         </LabelButton>
         <LabelButton
           className="colorIcon"
+          defaultAnchor
           to="https://www.instagram.com/"
+          target="_blank"
         >
           <InstagramLogo
             size={23}
