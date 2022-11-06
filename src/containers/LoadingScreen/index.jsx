@@ -1,4 +1,6 @@
-import { useContext, useEffect } from 'react';
+import {
+  useContext, useEffect, useMemo, useRef, useState,
+} from 'react';
 import { HashLoader } from 'react-spinners';
 import { useTheme } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -23,7 +25,10 @@ const item = {
 
 export const LoadingScreen = () => {
   const theme = useTheme();
+  const [forcedStop, setForcedStop] = useState(false);
   const { isLoading } = useContext(AuthContext);
+
+  const timeStarted = useRef(null);
 
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -33,7 +38,23 @@ export const LoadingScreen = () => {
     };
   }, []);
 
-  return (
+  useEffect(() => {
+    if (isLoading) {
+      timeStarted.current = Date.parse(new Date());
+    } else {
+      if (timeStarted.current) {
+        const loadedFast = Date.parse(new Date()) - timeStarted.current <= 800;
+
+        if (loadedFast) {
+          setForcedStop(true);
+        }
+      }
+
+      timeStarted.current = null;
+    }
+  }, [isLoading]);
+
+  return !forcedStop && (
     <AnimatePresence>
       {isLoading && (
         <motion.div

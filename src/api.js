@@ -17,7 +17,7 @@ class API {
       baseURL: 'http://localhost:3333',
     });
 
-    this._delayDebug = 2000;
+    this._delayDebug = 1000;
   }
 
   setDefaultHeader(headerKey, value) {
