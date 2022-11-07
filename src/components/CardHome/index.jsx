@@ -13,6 +13,7 @@ import { Heading } from '../Heading';
 
 import * as S from './styles';
 
+
 export const CardHome = (props) => (
   <S.Container as={motion.div} whileHover={{ scale: 1.02 }}>
     <div className="content">
