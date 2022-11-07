@@ -5,8 +5,9 @@ Sistema de Login e Registro de usuário com Frontend e Backend utilizando as tec
 Projeto desenvolvido pela Equipe 3 da Comunidade BR
 
 <p align="center">
-<img src="./preview.png" width=65% height=65%>
+<img src="./previewGif.gif" width=65% height=65%>
 </p>
+
 
 
 
