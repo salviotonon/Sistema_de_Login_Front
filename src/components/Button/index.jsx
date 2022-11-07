@@ -9,6 +9,7 @@ import * as S from './styles';
 export const Button = ({
   variant, children, disabled, isLoading, to, href, ...props
 }) => {
+
   const theme = useTheme();
 
   let Component = 'button';
@@ -32,6 +33,7 @@ export const Button = ({
         onClick={handleDisabledAnchor}
         disabled={disabled || isLoading}
         to={to}
+        href={href}
         {...props}
       >
         {children}

@@ -23,6 +23,11 @@ export const Container = styled.div`
         line-height: 3.8rem;
 
     }
+    #app-btn {
+        margin-top: 2rem;
+        width: 350px;
+
+    }
      
 `;
 

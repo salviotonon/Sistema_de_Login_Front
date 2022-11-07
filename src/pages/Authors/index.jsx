@@ -10,6 +10,11 @@ export const Authors = () => {
       img={item.avatar}
       subtitle={item.subtitle}
       email={item.email}
+      github={item.github}
+      instagram={item.instagram}
+      facebook={item.facebook}
+      twitter={item.twitter}
+      linkedin={item.linkedin}
     />
   ));
   return (

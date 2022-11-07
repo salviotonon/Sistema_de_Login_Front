@@ -12,7 +12,7 @@ import { Heading } from '../Heading';
 import * as S from './styles';
 
 export const CardAuthors = ({
-  name, email, img, subtitle,
+  name, email, img, subtitle, ...props
 }) => (
   <S.Container>
     <S.ContainerImg>
@@ -21,6 +21,7 @@ export const CardAuthors = ({
       </Link>
       <div className="actions">
         <Button
+        href={`${props.github}`}
           type="button"
           variant="secondary"
         >
@@ -30,6 +31,7 @@ export const CardAuthors = ({
           GitHub
         </Button>
         <Button
+        href={`${props.linkedin}`}
           type="button"
         >
           <LinkedinLogo
@@ -71,36 +73,36 @@ export const CardAuthors = ({
       </S.TitleBox2>
       <S.EmptyFooter>
         <S.SocialMidia>
-          <LabelButton
+          {props.twitter !== undefined && <LabelButton
             className="colorIcon"
             defaultAnchor
-            to="https://twitter.com/"
+            to={`${props.twitter}`}
             target="_blank"
           >
             <TwitterLogo
               size={23}
             />
-          </LabelButton>
-          <LabelButton
+          </LabelButton>}
+          {props.facebook !== undefined && <LabelButton
             className="colorIcon"
             defaultAnchor
-            to="https://www.facebook.com/"
+            to={`${props.facebook}`}
             target="_blank"
           >
             <FacebookLogo
               size={23}
             />
-          </LabelButton>
-          <LabelButton
+          </LabelButton>}
+          {props.instagram !== undefined && <LabelButton
             className="colorIcon"
             defaultAnchor
-            to="https://www.instagram.com/"
+            to={`${props.instagram}`}
             target="_blank"
           >
             <InstagramLogo
               size={23}
             />
-          </LabelButton>
+          </LabelButton>}
         </S.SocialMidia>
       </S.EmptyFooter>
     </S.ContainerText>
