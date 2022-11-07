@@ -46,11 +46,17 @@ PORT=
 ## 🛠️ Construído com
 
 * [React](https://reactjs.org/) - O framework de JavaScript web usado
+* [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)  linguagem de marcação utilizada na construção de páginas na Web.
+* [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS) é um mecanismo para adicionar estilo (cores, fontes, espaçamento, etc.) a um documento web.
+* [JavaScrip](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) Linguagem de programação utilizada no projeto.
+* [React-Router](https://reactrouter.com/en/main) - React Router permite "roteamento do lado do cliente".
+* [Framer-Motion](https://www.npmjs.com/package/framer-motion) animações
 * [Styled-Component](https://styled-components.com/) - Poderosa junção de CSS e JavaScript utilizado para a estilização dos componentes
 * [Express](https://expressjs.com/) - O framework de aplicativo da web NodeJS
 * [MongoDB](https://www.mongodb.com/) -Software de banco de dados
 * [JWT](https://jwt.io/) -  Padrão da Internet para a criação de dados com assinatura opcional e/ou criptografia
 * [Figma](https://www.figma.com/) - Software do design
+* [Vite](https://vitejs.dev/) -é uma ferramenta de construção que visa fornecer uma experiência de desenvolvimento mais rápida e enxuta para projetos web modernos
 
 ## 📌 Versão
 
