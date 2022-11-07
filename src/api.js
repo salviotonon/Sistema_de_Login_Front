@@ -101,6 +101,12 @@ class API {
     return { user: fakeUser };
   }
 
+  async updateAvatarUser() {
+    await delay(this._delayDebug);
+
+    return {};
+  }
+
   async deleteUserAccount({ password }) {
     await delay(this._delayDebug);
 

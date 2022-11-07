@@ -4,6 +4,7 @@ import { House, UserList, Code } from 'phosphor-react';
 
 import { AuthContext } from '../../contexts/AuthContext';
 
+import { Avatar } from '../../components/Avatar';
 import { Logo } from '../../components/Logo';
 import { LogoutButton } from '../../components/LogoutButton';
 import { NavSelecter } from '../../components/NavSelecter';
@@ -13,7 +14,7 @@ import { NavBar } from '../NavBar';
 import * as S from './styles';
 
 export const Header = () => {
-  const { user, isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <S.Container>
@@ -49,7 +50,7 @@ export const Header = () => {
         {isAuthenticated && (
           <div className="profile-and-logout">
             <Link to="/profile" id="btn-avatar">
-              <img src={user.avatarUrl} alt="Avatar" id="avatar" />
+              <Avatar />
             </Link>
 
             <LogoutButton />
