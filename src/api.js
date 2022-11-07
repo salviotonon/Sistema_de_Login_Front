@@ -8,7 +8,7 @@ import { APIError } from './errors/APIErrors';
 const fakeUser = {
   name: 'Usuario1',
   email: 'email@example.com',
-  avatarUrl: './assets/images/felipe-avatar.jpg',
+  avatarUrl: 'src/assets/images/felipe-avatar.jpg',
 };
 
 class API {
