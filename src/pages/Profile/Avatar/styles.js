@@ -13,13 +13,21 @@ export const FormStyled = styled.form`
   flex-direction: column;
   gap: 1.6rem;
 
+  .drop-zone-action {
+    display: flex;
+    flex-direction: row;
+    gap: 2.4rem;
+    align-items: center;
+  }
+
   .actions {
     margin-top: 0.8rem;
 
     display: flex;
+    gap: 4rem;
 
     #app-btn {
-      width: fit-content;
+      width: 18rem;
     }
   }
 `;

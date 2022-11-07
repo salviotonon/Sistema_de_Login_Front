@@ -11,6 +11,7 @@ import { Heading } from '../../../components/Heading';
 import { Button } from '../../../components/Button';
 
 import * as S from './styles';
+import { DropZone } from '../../../components/DropZone';
 
 export const Avatar = () => {
   const { user } = useContext(AuthContext);
@@ -52,7 +53,8 @@ export const Avatar = () => {
       <S.FormStyled onSubmit={handleSubmit} onChange={handleChange}>
 
         <div className="drop-zone-action">
-          <AvatarComponent />
+          <AvatarComponent width="6.4rem" height="6.4rem" />
+          <DropZone labelButton="Fazer upload de imagem" />
         </div>
 
         <div className="actions">
