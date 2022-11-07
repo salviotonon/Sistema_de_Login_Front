@@ -100,6 +100,16 @@ class API {
 
     return { user: fakeUser };
   }
+
+  async deleteUserAccount({ password }) {
+    await delay(this._delayDebug);
+
+    if (password === 'wrongtest') {
+      throw new APIError(401, 'Senha inválida.');
+    }
+
+    return {};
+  }
 }
 
 const api = new API();
