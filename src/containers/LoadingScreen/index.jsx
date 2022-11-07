@@ -28,8 +28,6 @@ export const LoadingScreen = () => {
   const [forcedStop, setForcedStop] = useState(false);
   const { isLoading } = useContext(AuthContext);
 
-  console.log(isLoading);
-
   const timeStarted = useRef(null);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import {
   useCallback, createContext, useMemo, useState,
-  useEffect,
+  useLayoutEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -16,7 +16,18 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
+  if (!user) {
+    const fallbackUser = storage.get('auth:user');
+
+    if (!storage.get('auth:token')) {
+      storage.remove('auth:user');
+      storage.remove('auth:token');
+    } else if (fallbackUser) {
+      setUser(JSON.parse(fallbackUser));
+    }
+  }
+
+  useLayoutEffect(() => {
     const validateToken = async () => {
       const token = storage.get('auth:token');
 
@@ -27,6 +38,9 @@ export const AuthProvider = ({ children }) => {
 
           setUser(userData);
         } catch {
+          setUser(null);
+          storage.remove('auth:token');
+          storage.remove('auth:user');
           toast.error('Sua sessão expirou');
         } finally {
           setIsLoading(false);
@@ -43,6 +57,7 @@ export const AuthProvider = ({ children }) => {
       const { user: userData, token } = await api.login({ name, password });
 
       storage.store('auth:token', token);
+      storage.store('auth:user', JSON.stringify(userData));
       setUser(userData);
 
       navigate('/');
@@ -63,6 +78,7 @@ export const AuthProvider = ({ children }) => {
       });
 
       storage.store('auth:token', token);
+      storage.store('auth:user', userData);
       setUser(userData);
 
       navigate('/');
@@ -75,6 +91,7 @@ export const AuthProvider = ({ children }) => {
 
   const handleLogout = useCallback(() => {
     storage.remove('auth:token');
+    storage.remove('auth:user');
     setUser(null);
 
     navigate('/app');
