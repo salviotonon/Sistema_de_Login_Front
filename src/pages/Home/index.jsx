@@ -11,6 +11,11 @@ export const Home = () => {
       img={item.avatar}
       subtitle={item.subtitle}
       email={item.email}
+      instagram={item.instagram}
+      facebook={item.facebook}
+      twitter={item.twitter}
+      github={item.github}
+      linkedin={item.linkedin}
     />
   ));
 
