@@ -1,5 +1,5 @@
 import {
-  useContext, useEffect, useMemo, useRef, useState,
+  useContext, useEffect, useRef, useState,
 } from 'react';
 import { HashLoader } from 'react-spinners';
 import { useTheme } from 'styled-components';

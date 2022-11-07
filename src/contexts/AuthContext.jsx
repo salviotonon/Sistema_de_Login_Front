@@ -1,6 +1,5 @@
 import {
-  useCallback, createContext, useMemo, useState,
-  useLayoutEffect,
+  useCallback, createContext, useMemo, useState, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -27,7 +26,7 @@ export const AuthProvider = ({ children }) => {
     }
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const validateToken = async () => {
       const token = storage.get('auth:token');
 
