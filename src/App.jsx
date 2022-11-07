@@ -8,7 +8,6 @@ import theme from './styles/themes/default';
 
 import { ToastContainerModified } from './containers/ToastContainerModified';
 import { LoadingScreen } from './containers/LoadingScreen';
-import { Developer } from './containers/Developer';
 
 import { AuthProvider } from './contexts/AuthContext';
 import { MainRoutes } from './Routes';
@@ -21,7 +20,6 @@ export const App = () => (
       <AuthProvider>
         <ToastContainerModified />
         <LoadingScreen />
-        <Developer />
         <Layout>
           <MainRoutes />
         </Layout>
