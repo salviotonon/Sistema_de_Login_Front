@@ -34,11 +34,3 @@ export const FormStyled = styled.form`
     }
   }
 `;
-
-export const InputGroup = styled.div`
-  display: flex;
-  gap: 3.2rem;
-
-  align-items: center;
-  justify-content: flex-end;
-`;

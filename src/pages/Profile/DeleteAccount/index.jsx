@@ -83,14 +83,12 @@ export const DeleteAccount = () => {
         salvos serão perdidos.
       </Text>
       <S.FormStyled onSubmit={handleSubmit} onChange={handleChange}>
-        <S.InputGroup>
-          <Text>Nome</Text>
-          <InputPassword
-            value={password}
-            onChange={handlePasswordChange}
-            errorFeedback={getMessageErrorByField('password')}
-          />
-        </S.InputGroup>
+        <InputPassword
+          value={password}
+          onChange={handlePasswordChange}
+          labelName="Para confirmar, digite sua senha e clique no botão abaixo."
+          errorFeedback={getMessageErrorByField('password')}
+        />
 
         <div className="actions">
           <Button
