@@ -1,5 +1,5 @@
 import {
-  useContext, useEffect, useMemo, useRef, useState,
+  useContext, useEffect, useRef, useState,
 } from 'react';
 import { HashLoader } from 'react-spinners';
 import { useTheme } from 'styled-components';
@@ -27,8 +27,6 @@ export const LoadingScreen = () => {
   const theme = useTheme();
   const [forcedStop, setForcedStop] = useState(false);
   const { isLoading } = useContext(AuthContext);
-
-  console.log(isLoading);
 
   const timeStarted = useRef(null);
 

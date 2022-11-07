@@ -1,12 +1,10 @@
 import {
-  Routes, Route, Navigate, useNavigate,
+  Routes, Route, Navigate,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from './contexts/AuthContext';
-
-import { Layout } from './containers/Layout';
 
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
@@ -17,41 +15,26 @@ import { Authors } from './pages/Authors';
 import { About } from './pages/About';
 import { Profile } from './pages/Profile';
 
-const RouteController = ({ type, children }) => {
-  const [canRender, setCanRender] = useState(false);
-  const { isLoading, isAuthenticated } = useContext(AuthContext);
-  const navigate = useNavigate();
+const CustomRoute = ({ type, children }) => {
+  const { isAuthenticated } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (!isLoading) {
-      if (type === 'privated' && !isAuthenticated) {
-        navigate('/app');
-      }
-
-      if (type === 'logged-out' && isAuthenticated) {
-        navigate('/');
-      }
-
-      setCanRender(true);
-      return;
-    }
-
-    setCanRender(false);
-  }, [isLoading]);
-
-  if (canRender) {
-    return children;
+  if (type === 'privated' && !isAuthenticated) {
+    return <Navigate to="/app" />;
   }
 
-  return null;
+  if (type === 'logged-out' && isAuthenticated) {
+    return <Navigate to="/" />;
+  }
+
+  return children;
 };
 
-RouteController.propTypes = {
+CustomRoute.propTypes = {
   type: PropTypes.oneOf(['public', 'privated', 'logged-out']),
   children: PropTypes.node.isRequired,
 };
 
-RouteController.defaultProps = {
+CustomRoute.defaultProps = {
   type: 'public',
 };
 
@@ -60,72 +43,72 @@ export const MainRoutes = () => (
     <Route
       path="/"
       element={(
-        <RouteController type="privated">
+        <CustomRoute type="privated">
           <Home />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/login"
       element={(
-        <RouteController type="logged-out">
+        <CustomRoute type="logged-out">
           <Login />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/signup"
       element={(
-        <RouteController type="logged-out">
+        <CustomRoute type="logged-out">
           <Signup />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/forgotpassword"
       element={(
-        <RouteController type="logged-out">
+        <CustomRoute type="logged-out">
           <ForgotPassword />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/app"
       element={(
-        <RouteController type="logged-out">
+        <CustomRoute type="logged-out">
           <HomeLogout />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/authors"
       element={(
-        <RouteController type="privated">
+        <CustomRoute type="privated">
           <Authors />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/profile"
       element={(
-        <RouteController type="privated">
+        <CustomRoute type="privated">
           <Profile />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 
     <Route
       path="/about"
       element={(
-        <RouteController type="privated">
+        <CustomRoute type="privated">
           <About />
-        </RouteController>
+        </CustomRoute>
       )}
     />
 

@@ -67,6 +67,10 @@ class API {
   async validate({ token }) {
     await delay(this._delayDebug);
 
+    if (token === 'wrongtoken') {
+      throw new APIError(400, 'Sessão expirada.');
+    }
+
     return { user: fakeUser };
   }
 
