@@ -31,14 +31,6 @@ export const LoadingScreen = () => {
   const timeStarted = useRef(null);
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, []);
-
-  useEffect(() => {
     if (isLoading) {
       timeStarted.current = Date.parse(new Date());
     } else {
