@@ -38,8 +38,8 @@ export const CardHome = (props) => (
       </div>
       <div className="actions">
         <Button
-          type="button"
-          variant="secondary"
+        href={`${props.github}`}
+        variant="secondary"
         >
           <GithubLogo
             size={23}
@@ -47,7 +47,8 @@ export const CardHome = (props) => (
           GitHub
         </Button>
         <Button
-          type="button"
+          href={`${props.linkedin}`}
+      
         >
           <LinkedinLogo
             size={23}
@@ -58,36 +59,36 @@ export const CardHome = (props) => (
     </div>
     <S.EmptyFooter>
       <S.SocialMidia>
-        <LabelButton
+        {props.twitter !== undefined && <LabelButton
           className="colorIcon"
           defaultAnchor
-          to="https://twitter.com/"
+          to={`${props.twitter}`}
           target="_blank"
         >
           <TwitterLogo
             size={23}
           />
-        </LabelButton>
-        <LabelButton
+        </LabelButton>}
+        {props.facebook !== undefined && <LabelButton
           className="colorIcon"
           defaultAnchor
-          to="https://www.facebook.com/"
+          to={`${props.facebook}`}
           target="_blank"
         >
           <FacebookLogo
             size={23}
           />
-        </LabelButton>
-        <LabelButton
+        </LabelButton>}
+        {props.instagram !== undefined && <LabelButton
           className="colorIcon"
           defaultAnchor
-          to="https://www.instagram.com/"
+          to={`${props.instagram}`}
           target="_blank"
         >
           <InstagramLogo
             size={23}
           />
-        </LabelButton>
+        </LabelButton>}
       </S.SocialMidia>
     </S.EmptyFooter>
   </S.Container>
