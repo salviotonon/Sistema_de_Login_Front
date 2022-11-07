@@ -29,7 +29,13 @@ export default {
       300: '#F15B5B',
       200: '#F6898A',
     },
+    green: {
+      500: '#22C55E',
+    },
   },
+
+  overlay: 'rgba(0, 0, 0, 0.15)',
+  overlayBlur: 'blur(2px)',
 
   size: {
     h1: '3.2rem',

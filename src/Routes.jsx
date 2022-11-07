@@ -13,7 +13,12 @@ import { ForgotPassword } from './pages/ForgotPassword';
 import { HomeLogout } from './pages/HomeLogout';
 import { Authors } from './pages/Authors';
 import { About } from './pages/About';
+
 import { Profile } from './pages/Profile';
+import { Settings } from './pages/Profile/Settings';
+import { Avatar } from './pages/Profile/Avatar';
+import { ChangePassword } from './pages/Profile/ChangePassword';
+import { DeleteAccount } from './pages/Profile/DeleteAccount';
 
 const CustomRoute = ({ type, children }) => {
   const { isAuthenticated } = useContext(AuthContext);
@@ -101,7 +106,27 @@ export const MainRoutes = () => (
           <Profile />
         </CustomRoute>
       )}
-    />
+    >
+      <Route
+        path="settings"
+        element={<Settings />}
+      />
+
+      <Route
+        path="avatar"
+        element={<Avatar />}
+      />
+
+      <Route
+        path="changepassword"
+        element={<ChangePassword />}
+      />
+
+      <Route
+        path="deleteaccount"
+        element={<DeleteAccount />}
+      />
+    </Route>
 
     <Route
       path="/about"

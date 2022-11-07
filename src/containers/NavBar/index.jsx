@@ -1,29 +1,13 @@
-import { Code, House, UserList } from 'phosphor-react';
-import { NavSelecter } from '../../components/NavSelecter';
+import PropTypes from 'prop-types';
 
 import { NavStyled } from './styles';
 
-export const NavBar = () => (
+export const NavBar = ({ children }) => (
   <NavStyled>
-    <NavSelecter
-      to="/"
-      icon={House}
-    >
-      Home
-    </NavSelecter>
-
-    <NavSelecter
-      to="/profile"
-      icon={UserList}
-    >
-      Meu perfil
-    </NavSelecter>
-
-    <NavSelecter
-      to="/about"
-      icon={Code}
-    >
-      Sobre
-    </NavSelecter>
+    {children}
   </NavStyled>
 );
+
+NavBar.propTypes = {
+  children: PropTypes.node.isRequired,
+};

@@ -40,17 +40,7 @@ export const Container = styled.div`
           border-color: ${({ theme }) => theme.colors.blue[400]};
           transform: scale(105%);
         }
-
-        #avatar {
-          width: 4.4rem;
-          height: 4.4rem;
-        }
       }
-    }
-
-    @media screen and (max-width: 632px) {
-      // TODO: criar o botão de menu
-      // TODO: criar funcionalidade para o botão de menu
     }
   }
 `;

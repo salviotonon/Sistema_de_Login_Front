@@ -79,6 +79,43 @@ class API {
 
     return { message: 'Enviamos instruções para seu e-mail, verifique sua caixa de entrada ou de spam.' };
   }
+
+  async updateNameUser({ name }) {
+    await delay(this._delayDebug);
+
+    return {
+      user: {
+        ...fakeUser,
+        name,
+      },
+    };
+  }
+
+  async updatePasswordUser({ currentPassword, newPassword, confirmPassword }) {
+    await delay(this._delayDebug);
+
+    if (currentPassword === 'wrongtest') {
+      throw new APIError(401, 'Senha inválida.');
+    }
+
+    return { user: fakeUser };
+  }
+
+  async updateAvatarUser() {
+    await delay(this._delayDebug);
+
+    return {};
+  }
+
+  async deleteUserAccount({ password }) {
+    await delay(this._delayDebug);
+
+    if (password === 'wrongtest') {
+      throw new APIError(401, 'Senha inválida.');
+    }
+
+    return {};
+  }
 }
 
 const api = new API();
