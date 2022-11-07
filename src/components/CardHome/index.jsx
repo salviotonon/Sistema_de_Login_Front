@@ -2,21 +2,20 @@ import PropTypes, { object } from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import {
-  LinkedinLogo, GithubLogo, TwitterLogo, FacebookLogo, InstagramLogo, LinkSimple
+  LinkedinLogo, GithubLogo, TwitterLogo, FacebookLogo, InstagramLogo, LinkSimple,
 } from 'phosphor-react';
 
+import { motion } from 'framer-motion';
 import { Text } from '../Text';
 import { LabelButton } from '../LabelButton';
 import { Button } from '../Button';
 import { Heading } from '../Heading';
 
-
 import * as S from './styles';
 
-export const CardHome = (props) => {
 
-    return(
-  <S.Container className='box-shadow'>
+export const CardHome = (props) => (
+  <S.Container as={motion.div} whileHover={{ scale: 1.02 }}>
     <div className="content">
       <Link to="/authors" id="avatar">
         <img src={`../../../public/${props.img}`} alt={props.name} id="avatar" />
@@ -29,10 +28,12 @@ export const CardHome = (props) => {
       </Text>
       <div className="sub-actions">
         <LabelButton className="link-email" to="/login">
-          {props.email} <LinkSimple
-                        color='white'
-                        size={18}
-                         />
+          {props.email}
+          {' '}
+          <LinkSimple
+            color="white"
+            size={18}
+          />
         </LabelButton>
       </div>
       <div className="actions">
@@ -57,22 +58,31 @@ export const CardHome = (props) => {
     </div>
     <S.EmptyFooter>
       <S.SocialMidia>
-        <LabelButton className='colorIcon'
+        <LabelButton
+          className="colorIcon"
+          defaultAnchor
           to="https://twitter.com/"
+          target="_blank"
         >
           <TwitterLogo
             size={23}
           />
         </LabelButton>
-        <LabelButton className='colorIcon'
+        <LabelButton
+          className="colorIcon"
+          defaultAnchor
           to="https://www.facebook.com/"
+          target="_blank"
         >
           <FacebookLogo
             size={23}
           />
         </LabelButton>
-        <LabelButton className='colorIcon'
+        <LabelButton
+          className="colorIcon"
+          defaultAnchor
           to="https://www.instagram.com/"
+          target="_blank"
         >
           <InstagramLogo
             size={23}
@@ -81,7 +91,7 @@ export const CardHome = (props) => {
       </S.SocialMidia>
     </S.EmptyFooter>
   </S.Container>
-)};
+);
 
 CardHome.propTypes = {
   heading: PropTypes.oneOf(['h1', 'h2', 'h3']),

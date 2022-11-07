@@ -3,10 +3,8 @@ import {
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { AuthContext } from './contexts/AuthContext';
-
-import { Layout } from './containers/Layout';
 
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
@@ -17,33 +15,27 @@ import { Authors } from './pages/Authors';
 import { About } from './pages/About';
 import { Profile } from './pages/Profile';
 
-const CustomRoute = ({ isPrivated, hasDefaultLayout, children }) => {
+const CustomRoute = ({ type, children }) => {
   const { isAuthenticated } = useContext(AuthContext);
 
-  if (isPrivated && !isAuthenticated) {
+  if (type === 'privated' && !isAuthenticated) {
     return <Navigate to="/app" />;
   }
 
-  if (hasDefaultLayout) {
-    return (
-      <Layout>
-        {children}
-      </Layout>
-    );
+  if (type === 'logged-out' && isAuthenticated) {
+    return <Navigate to="/" />;
   }
 
   return children;
 };
 
 CustomRoute.propTypes = {
-  isPrivated: PropTypes.bool,
-  hasDefaultLayout: PropTypes.bool,
+  type: PropTypes.oneOf(['public', 'privated', 'logged-out']),
   children: PropTypes.node.isRequired,
 };
 
 CustomRoute.defaultProps = {
-  isPrivated: false,
-  hasDefaultLayout: true,
+  type: 'public',
 };
 
 export const MainRoutes = () => (
@@ -51,7 +43,7 @@ export const MainRoutes = () => (
     <Route
       path="/"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute type="privated">
           <Home />
         </CustomRoute>
       )}
@@ -60,7 +52,7 @@ export const MainRoutes = () => (
     <Route
       path="/login"
       element={(
-        <CustomRoute>
+        <CustomRoute type="logged-out">
           <Login />
         </CustomRoute>
       )}
@@ -69,7 +61,7 @@ export const MainRoutes = () => (
     <Route
       path="/signup"
       element={(
-        <CustomRoute>
+        <CustomRoute type="logged-out">
           <Signup />
         </CustomRoute>
       )}
@@ -78,7 +70,7 @@ export const MainRoutes = () => (
     <Route
       path="/forgotpassword"
       element={(
-        <CustomRoute>
+        <CustomRoute type="logged-out">
           <ForgotPassword />
         </CustomRoute>
       )}
@@ -87,7 +79,7 @@ export const MainRoutes = () => (
     <Route
       path="/app"
       element={(
-        <CustomRoute>
+        <CustomRoute type="logged-out">
           <HomeLogout />
         </CustomRoute>
       )}
@@ -96,7 +88,7 @@ export const MainRoutes = () => (
     <Route
       path="/authors"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute type="privated">
           <Authors />
         </CustomRoute>
       )}
@@ -105,7 +97,7 @@ export const MainRoutes = () => (
     <Route
       path="/profile"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute type="privated">
           <Profile />
         </CustomRoute>
       )}
@@ -114,7 +106,7 @@ export const MainRoutes = () => (
     <Route
       path="/about"
       element={(
-        <CustomRoute isPrivated>
+        <CustomRoute type="privated">
           <About />
         </CustomRoute>
       )}

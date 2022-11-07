@@ -40,12 +40,16 @@ export default createGlobalStyle`
         font-size: ${theme.size.h3};
       }
 
-      p, span, a {
+      p, span, a, strong {
         font-size: ${theme.size.medium};
       }
 
       small {
         font-size: ${theme.size.small};
+      }
+
+      ul {
+        list-style: none;
       }
     `};
   }

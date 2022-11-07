@@ -11,7 +11,9 @@ import { Heading } from '../Heading';
 
 import * as S from './styles';
 
-export const CardAuthors = ({ name, email, img, subtitle }) => (
+export const CardAuthors = ({
+  name, email, img, subtitle,
+}) => (
   <S.Container>
     <S.ContainerImg>
       <Link to="/about" id="avatar">
@@ -53,38 +55,47 @@ export const CardAuthors = ({ name, email, img, subtitle }) => (
         </div>
       </S.TitleBox>
       <S.TitleBox2>
-      <Heading classname="subtitleH2" heading="h3">
-        About
-      </Heading>
-      <Text>
-        I am a frontend developer with a particular interest in making things simple and automating daily tasks. I try to keep up with security and best practices, and am always looking for new things to learn.
-      </Text>
-    
-      <Heading heading="h3">
-        Interests
-      </Heading>
-      <Text>
-        Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.
-      </Text>
-        </S.TitleBox2>
+        <Heading classname="subtitleH2" heading="h3">
+          About
+        </Heading>
+        <Text>
+          I am a frontend developer with a particular interest in making things simple and automating daily tasks. I try to keep up with security and best practices, and am always looking for new things to learn.
+        </Text>
+
+        <Heading heading="h3">
+          Interests
+        </Heading>
+        <Text>
+          Food expert. Music scholar. Reader. Internet fanatic. Bacon buff. Entrepreneur. Travel geek. Pop culture ninja. Coffee fanatic.
+        </Text>
+      </S.TitleBox2>
       <S.EmptyFooter>
         <S.SocialMidia>
-          <LabelButton className='colorIcon'
+          <LabelButton
+            className="colorIcon"
+            defaultAnchor
             to="https://twitter.com/"
+            target="_blank"
           >
             <TwitterLogo
               size={23}
             />
           </LabelButton>
-          <LabelButton className='colorIcon'
+          <LabelButton
+            className="colorIcon"
+            defaultAnchor
             to="https://www.facebook.com/"
+            target="_blank"
           >
             <FacebookLogo
               size={23}
             />
           </LabelButton>
-          <LabelButton className='colorIcon'
+          <LabelButton
+            className="colorIcon"
+            defaultAnchor
             to="https://www.instagram.com/"
+            target="_blank"
           >
             <InstagramLogo
               size={23}
@@ -96,8 +107,6 @@ export const CardAuthors = ({ name, email, img, subtitle }) => (
   </S.Container>
 );
 
-
-
 CardAuthors.propTypes = {
 
   heading: PropTypes.oneOf(['h1', 'h2', 'h3']),
@@ -105,7 +114,6 @@ CardAuthors.propTypes = {
   disabled: PropTypes.bool,
   to: PropTypes.any,
 };
-
 
 CardAuthors.defaultProps = {
   heading: 'h1',

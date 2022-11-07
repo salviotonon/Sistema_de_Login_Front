@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.slate[800]};
@@ -7,9 +7,9 @@ export const Container = styled.div`
   width: fit-content;
   margin: auto;
 
-  .box-shadow:hover {
 
-    
+  &:hover {
+    box-shadow: 0px 0px 10px rgba(80, 147, 226, 0.5);
   }
 
   .content {
@@ -76,7 +76,7 @@ export const EmptyFooter = styled.footer`
   height: 6.4rem;
 
   .colorIcon {
-    color: ${({theme}) => theme.colors.gray[300]};
+    color: ${({ theme }) => theme.colors.gray[300]};
   }
 `;
 
@@ -88,6 +88,6 @@ export const SocialMidia = styled.div`
     gap: 0.8rem;
 
     .colorIcon {
-      color: ${({theme}) => theme.colors.gray[300]};
+      color: ${({ theme }) => theme.colors.gray[300]};
     }
 `;

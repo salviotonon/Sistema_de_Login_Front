@@ -10,7 +10,7 @@ import { NavBar } from '../NavBar';
 import * as S from './styles';
 
 export const Header = () => {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { user, isAuthenticated } = useContext(AuthContext);
 
   return (
     <S.Container>
@@ -25,7 +25,7 @@ export const Header = () => {
         {isAuthenticated && (
           <div className="profile-and-logout">
             <Link to="/profile" id="btn-avatar">
-              <img src={felipeAvatar} alt="Avatar" id="avatar" />
+              <img src={user.avatarUrl} alt="Avatar" id="avatar" />
             </Link>
 
             <LogoutButton />

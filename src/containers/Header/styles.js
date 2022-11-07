@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.slate[900]};
+  height: 84px;
 
   .fixed-content {
     display: flex;

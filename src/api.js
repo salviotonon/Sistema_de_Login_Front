@@ -8,7 +8,7 @@ import { APIError } from './errors/APIErrors';
 const fakeUser = {
   name: 'Usuario1',
   email: 'email@example.com',
-  avatarUrl: './assets/images/felipe-avatar.jpg',
+  avatarUrl: 'src/assets/images/felipe-avatar.jpg',
 };
 
 class API {
@@ -66,6 +66,10 @@ class API {
 
   async validate({ token }) {
     await delay(this._delayDebug);
+
+    if (token === 'wrongtoken') {
+      throw new APIError(400, 'Sessão expirada.');
+    }
 
     return { user: fakeUser };
   }
