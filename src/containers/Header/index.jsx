@@ -1,10 +1,13 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { House, UserList, Code } from 'phosphor-react';
 
-import felipeAvatar from '../../assets/images/felipe-avatar.jpg';
+import { AuthContext } from '../../contexts/AuthContext';
+
 import { Logo } from '../../components/Logo';
 import { LogoutButton } from '../../components/LogoutButton';
-import { AuthContext } from '../../contexts/AuthContext';
+import { NavSelecter } from '../../components/NavSelecter';
+
 import { NavBar } from '../NavBar';
 
 import * as S from './styles';
@@ -18,7 +21,28 @@ export const Header = () => {
         <div className="logo-and-nav">
           <Logo />
           {isAuthenticated && (
-            <NavBar />
+            <NavBar>
+              <NavSelecter
+                to="/"
+                icon={House}
+              >
+                Home
+              </NavSelecter>
+
+              <NavSelecter
+                to="/profile"
+                icon={UserList}
+              >
+                Meu perfil
+              </NavSelecter>
+
+              <NavSelecter
+                to="/about"
+                icon={Code}
+              >
+                Sobre
+              </NavSelecter>
+            </NavBar>
           )}
         </div>
 

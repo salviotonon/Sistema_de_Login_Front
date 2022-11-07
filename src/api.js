@@ -79,6 +79,27 @@ class API {
 
     return { message: 'Enviamos instruções para seu e-mail, verifique sua caixa de entrada ou de spam.' };
   }
+
+  async updateNameUser({ name }) {
+    await delay(this._delayDebug);
+
+    return {
+      user: {
+        ...fakeUser,
+        name,
+      },
+    };
+  }
+
+  async updatePasswordUser({ currentPassword, newPassword, confirmPassword }) {
+    await delay(this._delayDebug);
+
+    if (currentPassword === 'wrongtest') {
+      throw new APIError(401, 'Senha inválida.');
+    }
+
+    return { user: fakeUser };
+  }
 }
 
 const api = new API();
