@@ -5,6 +5,7 @@ import {
   LinkedinLogo, GithubLogo, TwitterLogo, FacebookLogo, InstagramLogo, LinkSimple,
 } from 'phosphor-react';
 
+import { motion } from 'framer-motion';
 import { Text } from '../Text';
 import { LabelButton } from '../LabelButton';
 import { Button } from '../Button';
@@ -13,7 +14,7 @@ import { Heading } from '../Heading';
 import * as S from './styles';
 
 export const CardHome = (props) => (
-  <S.Container>
+  <S.Container as={motion.div} whileHover={{ scale: 1.02 }}>
     <div className="content">
       <Link to="/authors" id="avatar">
         <img src={`../../../public/${props.img}`} alt={props.name} id="avatar" />
