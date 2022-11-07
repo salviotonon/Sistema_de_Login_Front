@@ -7,10 +7,16 @@ export const Container = styled.div`
   width: fit-content;
   margin: auto;
 
+  .box-shadow:hover {
+
+    
+  }
+
   .content {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 
     h2 {
       padding-top: 2rem;
@@ -20,6 +26,7 @@ export const Container = styled.div`
         max-width: 317px;
         max-height:317px;
         overflow: hidden;
+        
     }
     #avatar img {
         width: 100%;

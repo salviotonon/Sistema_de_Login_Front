@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
     display: flex;
     align-items: center;
+    overflow: hidden;
     justify-content: center;
-    max-width: 300px;
+    max-width: 1100px;
 
     img {
         width: 100%;

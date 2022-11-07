@@ -8,6 +8,7 @@ export const Container = styled.div`
   overflow: hidden;
   width: fit-content;
   margin: auto;
+  margin-bottom: 1rem;
 
   .content {
     display: flex;

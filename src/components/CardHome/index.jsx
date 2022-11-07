@@ -16,7 +16,7 @@ import * as S from './styles';
 export const CardHome = (props) => {
 
     return(
-  <S.Container>
+  <S.Container className='box-shadow'>
     <div className="content">
       <Link to="/authors" id="avatar">
         <img src={`../../../public/${props.img}`} alt={props.name} id="avatar" />

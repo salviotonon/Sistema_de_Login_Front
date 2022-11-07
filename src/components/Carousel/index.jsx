@@ -9,7 +9,7 @@ export default class extends React.Component {
         return (
             <S.Container>
                 <Carousel
-                    slidesToShow={3}
+                    slidesToShow={8}
                     cellAlign='center'
                     defaultControlsConfig={{
                         nextButtonText: '>',
@@ -25,6 +25,18 @@ export default class extends React.Component {
                     <img className='reactIcon' src="../../public/reactJS.png" alt="" />
                 </S.ContainerImg>
                 <S.ContainerImg>
+                    <Heading heading="h3">Vite</Heading>
+                    <img className='reactIcon' src="../../public/vite.png" alt="" />
+                </S.ContainerImg>
+                <S.ContainerImg>
+                    <Heading heading="h3">React-Router</Heading>
+                    <img className='reactIcon' src="../../public/reactRouter.png" alt="" />
+                </S.ContainerImg>
+                <S.ContainerImg>
+                    <Heading heading="h3">JavaScript</Heading>
+                    <img className='reactIcon' src="../../public/javaScript.png" alt="" />
+                </S.ContainerImg>
+                <S.ContainerImg>
                 <Heading heading="h3">NodeJS</Heading>
                     <img className='reactIcon' src="../../public/node.jpg" alt="" />
                 </S.ContainerImg>
@@ -35,6 +47,14 @@ export default class extends React.Component {
                 <S.ContainerImg>
                 <Heading heading="h3">JWT</Heading>
                     <img className='reactIcon' src="../../public/jwt.png" alt="" />
+                </S.ContainerImg>
+                <S.ContainerImg>
+                    <Heading heading="h3">HTML</Heading>
+                    <img className='reactIcon' src="../../public/html.png" alt="" />
+                </S.ContainerImg>
+                <S.ContainerImg>
+                    <Heading heading="h3">CSS</Heading>
+                    <img className='reactIcon' src="../../public/css.png" alt="" />
                 </S.ContainerImg>
                 </Carousel>
             </S.Container>
